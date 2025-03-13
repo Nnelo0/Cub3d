@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strtrim.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nnelo <nnelo@student.42.fr>                +#+  +:+       +#+        */
+/*   By: ebroudic <ebroudic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/17 13:33:51 by ebroudic          #+#    #+#             */
-/*   Updated: 2024/10/24 21:19:39 by nnelo            ###   ########.fr       */
+/*   Updated: 2025/03/13 15:21:59 by ebroudic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,17 +68,17 @@ char	*ft_strtrim(char const *s1, char const *set)
 	dsa[k] = '\0';
 	return (dsa);
 }
-/*size_t	ft_strlen(const char *s)
-{
-	int	i;
+// size_t	ft_strlen(const char *s)
+// {
+// 	int	i;
 
-	i = 0;
-	while (s[i] != '\0')
-		i++;
-	return (i);
-}
-int main ()
-{
-	printf("%s\n", ft_strtrim("aaaaahello worldaaaaaaa", "a"));
-	return (0);
-}*/
+// 	i = 0;
+// 	while (s[i] != '\0')
+// 		i++;
+// 	return (i);
+// }
+// int main ()
+// {
+// 	printf("%s\n", ft_strtrim("aaaaahello worldaaaaaaa", "a"));
+// 	return (0);
+// }
