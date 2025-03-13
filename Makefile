@@ -1,7 +1,9 @@
+MAKEFLAGS += --silent
+
 NAME = cube
 CC = cc
 CFLAGS = -Wall -Werror -Wextra -I./minilibx-linux -L./minilibx-linux -lmlx -lXext -lX11 -lm
-SRCS = main.c
+SRCS = srcs/main.c
 
 LIBFTDIR = libft
 LIBFT = $(LIBFTDIR)/libft.a
