@@ -6,7 +6,7 @@
 /*   By: ebroudic <ebroudic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/05 15:46:02 by ebroudic          #+#    #+#             */
-/*   Updated: 2025/03/13 15:53:22 by ebroudic         ###   ########.fr       */
+/*   Updated: 2025/03/14 09:19:06 by ebroudic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,13 +71,56 @@ int	read_file(char *filename, t_cub *cub)
 	close (fd);
 	return (0);
 }
+void	has_textures(t_cub *cub)
+{
+	if (ft_strcmp(cub->split_file[0], "NO") == 0)
+	{	
+		cub->face_NO = ft_strdup(cub->split_file[1]);
+		free_array(cub->split_file);
+		cub->split_file = NULL;
+	}
+	else if (ft_strcmp(cub->split_file[0], "SO") == 0)
+	{	
+		cub->face_SO = ft_strdup(cub->split_file[1]);
+		free_array(cub->split_file);
+		cub->split_file = NULL;
+	}
+	else if (ft_strcmp(cub->split_file[0], "EA") == 0)
+	{	
+		cub->face_EA = ft_strdup(cub->split_file[1]);
+		free_array(cub->split_file);
+		cub->split_file = NULL;
+	}
+	else if (ft_strcmp(cub->split_file[0], "WE") == 0)
+	{	
+		cub->face_WE = ft_strdup(cub->split_file[1]);
+		free_array(cub->split_file);
+		cub->split_file = NULL;
+	}
+}
 
 int	read_textures(t_cub *cub)
 {
 	int		i;
+	int		j;
 
 	i = 0;
-	cub->split_cub = ft_split(cub->file[0], ' ');
-	
+	j = 0;
+	while (cub->file[i])
+	{
+		cub->split_file = ft_split(cub->file[i], ' ');
+		if (!cub->split_file || !cub->split_file[0])
+		{
+			i++;
+			continue ;
+		}
+		has_textures(cub);
+		if (!cub->split_file || !cub->split_file[0])
+		{
+			i++;
+			continue ;
+		}
+		i++;
+	}
 	return (0);
 }

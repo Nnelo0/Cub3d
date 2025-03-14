@@ -6,7 +6,7 @@
 /*   By: ebroudic <ebroudic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/13 09:12:28 by ebroudic          #+#    #+#             */
-/*   Updated: 2025/03/13 15:43:30 by ebroudic         ###   ########.fr       */
+/*   Updated: 2025/03/14 09:19:20 by ebroudic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,10 +30,16 @@ typedef struct s_cub
 	void	*mlx_ptr;
 	void	*win_ptr;
 	char	**file;
-	char	**split_cub;
+	char	**split_file;
+	char	*face_NO;
+	char	*face_SO;
+	char	*face_EA;
+	char	*face_WE;
 }				t_cub;
 
-int	read_file(char *filename, t_cub *cub);
-int	read_textures(t_cub *cub);
+int		read_file(char *filename, t_cub *cub);
+int		read_textures(t_cub *cub);
+void	free_array(char **arg);
+
 
 #endif

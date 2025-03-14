@@ -6,7 +6,7 @@
 /*   By: ebroudic <ebroudic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/03 09:01:29 by ebroudic          #+#    #+#             */
-/*   Updated: 2025/03/13 15:45:20 by ebroudic         ###   ########.fr       */
+/*   Updated: 2025/03/14 09:21:13 by ebroudic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,10 +60,12 @@ int	main(int argc, char **argv)
 			return (2);
 		for (int i = 0; cub.file[i]; i++)
 			printf("%s", cub.file[i]);
-		printf("\n--------------------------\n");
+		printf("\n\n--------------------------\n\n");
 		read_textures(&cub);
-		for (int i = 0; cub.split_cub[i]; i++)
-			printf("%s", cub.split_cub[i]);
+		printf("%s\n", cub.face_NO);
+		printf("%s\n", cub.face_SO);
+		printf("%s\n", cub.face_WE);
+		printf("%s\n", cub.face_EA);
 		free_array(cub.file);
 		return (0);
 	}
