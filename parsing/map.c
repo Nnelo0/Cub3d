@@ -6,7 +6,7 @@
 /*   By: ebroudic <ebroudic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/05 15:46:02 by ebroudic          #+#    #+#             */
-/*   Updated: 2025/03/14 09:19:06 by ebroudic         ###   ########.fr       */
+/*   Updated: 2025/03/14 16:41:30 by ebroudic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,33 +73,45 @@ int	read_file(char *filename, t_cub *cub)
 }
 void	has_textures(t_cub *cub)
 {
-	if (ft_strcmp(cub->split_file[0], "NO") == 0)
+	if (ft_strcmp(cub->split_file[0], "NO") == 0 && !cub->face_NO)
 	{	
 		cub->face_NO = ft_strdup(cub->split_file[1]);
 		free_array(cub->split_file);
 		cub->split_file = NULL;
 	}
-	else if (ft_strcmp(cub->split_file[0], "SO") == 0)
+	else if (ft_strcmp(cub->split_file[0], "SO") == 0 && !cub->face_SO)
 	{	
 		cub->face_SO = ft_strdup(cub->split_file[1]);
 		free_array(cub->split_file);
 		cub->split_file = NULL;
 	}
-	else if (ft_strcmp(cub->split_file[0], "EA") == 0)
+	else if (ft_strcmp(cub->split_file[0], "EA") == 0 && !cub->face_EA)
 	{	
 		cub->face_EA = ft_strdup(cub->split_file[1]);
 		free_array(cub->split_file);
 		cub->split_file = NULL;
 	}
-	else if (ft_strcmp(cub->split_file[0], "WE") == 0)
+	else if (ft_strcmp(cub->split_file[0], "WE") == 0 && !cub->face_WE)
 	{	
 		cub->face_WE = ft_strdup(cub->split_file[1]);
 		free_array(cub->split_file);
 		cub->split_file = NULL;
 	}
+	else if (ft_strcmp(cub->split_file[0], "C") == 0 && !cub->colors_celling)
+	{	
+		cub->colors_celling = ft_strdup(cub->split_file[1]);
+		free_array(cub->split_file);
+		cub->split_file = NULL;
+	}
+	else if (ft_strcmp(cub->split_file[0], "F") == 0 && !cub->colors_floor)
+	{	
+		cub->colors_floor = ft_strdup(cub->split_file[1]);
+		free_array(cub->split_file);
+		cub->split_file = NULL;
+	}
 }
 
-int	read_textures(t_cub *cub)
+int	read_textures_colors(t_cub *cub)
 {
 	int		i;
 	int		j;
@@ -108,7 +120,7 @@ int	read_textures(t_cub *cub)
 	j = 0;
 	while (cub->file[i])
 	{
-		cub->split_file = ft_split(cub->file[i], ' ');
+		cub->split_file = ft_split_tab_space(cub->file[i]);
 		if (!cub->split_file || !cub->split_file[0])
 		{
 			i++;
@@ -124,3 +136,11 @@ int	read_textures(t_cub *cub)
 	}
 	return (0);
 }
+
+// int	read_map(t_cub *cub)
+// {
+// 	int	i;
+
+// 	i = 0;
+// 	while (cub->file[i])
+// }

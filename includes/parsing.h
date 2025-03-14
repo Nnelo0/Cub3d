@@ -6,7 +6,7 @@
 /*   By: ebroudic <ebroudic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/13 09:12:28 by ebroudic          #+#    #+#             */
-/*   Updated: 2025/03/14 09:19:20 by ebroudic         ###   ########.fr       */
+/*   Updated: 2025/03/14 16:40:38 by ebroudic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,11 +35,15 @@ typedef struct s_cub
 	char	*face_SO;
 	char	*face_EA;
 	char	*face_WE;
+	char	*colors_celling;
+	char	*colors_floor;
+	char	**map;
 }				t_cub;
 
 int		read_file(char *filename, t_cub *cub);
-int		read_textures(t_cub *cub);
+int		read_textures_colors(t_cub *cub);
 void	free_array(char **arg);
+char	**ft_split_tab_space(char const *s);
 
 
 #endif
