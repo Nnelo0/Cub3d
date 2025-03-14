@@ -6,7 +6,7 @@
 /*   By: ebroudic <ebroudic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/05 15:46:02 by ebroudic          #+#    #+#             */
-/*   Updated: 2025/03/14 16:41:30 by ebroudic         ###   ########.fr       */
+/*   Updated: 2025/03/14 17:13:29 by ebroudic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -132,15 +132,42 @@ int	read_textures_colors(t_cub *cub)
 			i++;
 			continue ;
 		}
+		free_array(cub->split_file);
 		i++;
 	}
 	return (0);
 }
+int	is_map_line(char *line)
+{
+	int	i;
 
-// int	read_map(t_cub *cub)
-// {
-// 	int	i;
+	i = 0;
+	while (line[i] != '\0')
+	{
+		if (line[i] != '1' && line[i] != '0' && line[i] != ' ' &&
+			line[i] != 'N' && line[i] != 'S' && line[i] != 'E' &&
+			line[i] != 'W' && line[i] != '\n')
+			return (0);
+		i++;
+	}
+	return (1);
+}
 
-// 	i = 0;
-// 	while (cub->file[i])
-// }
+int	read_map(t_cub *cub)
+{
+	int	i;
+	int	j;
+
+	i = 0;
+	j = 0;
+	while (cub->file[i])
+	{
+		if (is_map_line(cub->file[i]))
+		{
+			cub->map[j] = ft_strdup(cub->file[i]);
+			j++;
+		}
+		i++;
+	}
+	return (0);
+}

@@ -6,7 +6,7 @@
 /*   By: ebroudic <ebroudic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/03 09:01:29 by ebroudic          #+#    #+#             */
-/*   Updated: 2025/03/14 16:39:18 by ebroudic         ###   ########.fr       */
+/*   Updated: 2025/03/14 17:18:21 by ebroudic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,10 +58,10 @@ int	main(int argc, char **argv)
 					, GREEN), 2);
 		if (read_file(argv[1], &cub) == -1)
 			return (2);
+		printf(RED "\n\n--------------------ALL_FILE--------------------\n\n" RESET);	
 		for (int i = 0; cub.file[i]; i++)
 			printf("%s", cub.file[i]);
-		printf("\n\n----------------------------------\n\n");
-		
+		printf(RED "\n\n-----------------TEXTURE_COLORS-----------------\n\n" RESET);
 		cub.face_NO = NULL;
 		cub.face_SO = NULL;
 		cub.face_WE = NULL;
@@ -75,8 +75,16 @@ int	main(int argc, char **argv)
 		printf("EA: %s\n", cub.face_EA);
 		printf("FLOOR: %s\n", cub.colors_floor);
 		printf("CELL: %s\n", cub.colors_celling);
+		printf(RED "\n\n-----------------------MAP----------------------\n\n" RESET);
+		int	j;
+		j = count_lines(argv[1]);
+		if (j == -1)
+			return (-1);
+		cub.map = malloc(sizeof(char *) * (j + 1));
+		read_map(&cub);
+		for (int i = 0; cub.map[i]; i++)
+			printf("%s", cub.map[i]);
 		free_array(cub.file);
-		
 		return (0);
 	}
 	else
