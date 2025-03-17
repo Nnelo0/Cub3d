@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ebroudic <ebroudic@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nnelo <nnelo@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/05 15:46:02 by ebroudic          #+#    #+#             */
-/*   Updated: 2025/03/17 13:16:24 by ebroudic         ###   ########.fr       */
+/*   Updated: 2025/03/17 20:11:29 by nnelo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,43 +72,69 @@ int	read_file(char *filename, t_cub *cub)
 	return (0);
 }
 
-void	has_textures(t_cub *cub)
+void	has_textures(t_cub *cub, int *j)
 {
+	char *tmp;
+
 	if (ft_strcmp(cub->split_file[0], "NO") == 0 && !cub->face_NO)
 	{	
 		cub->face_NO = ft_strdup(cub->split_file[1]);
+		tmp = cub->face_NO;
+		cub->face_NO = ft_strtrim(cub->face_NO, "\n");
+		free(tmp);
 		free_array(cub->split_file);
 		cub->split_file = NULL;
+		(*j) = 1;
 	}
 	else if (ft_strcmp(cub->split_file[0], "SO") == 0 && !cub->face_SO)
 	{	
 		cub->face_SO = ft_strdup(cub->split_file[1]);
+		tmp = cub->face_SO;
+		cub->face_SO = ft_strtrim(cub->face_SO, "\n");
+		free(tmp);
 		free_array(cub->split_file);
 		cub->split_file = NULL;
+		(*j) = 1;
 	}
 	else if (ft_strcmp(cub->split_file[0], "EA") == 0 && !cub->face_EA)
 	{	
 		cub->face_EA = ft_strdup(cub->split_file[1]);
+		tmp = cub->face_EA;
+		cub->face_EA = ft_strtrim(cub->face_EA, "\n");
+		free(tmp);
 		free_array(cub->split_file);
 		cub->split_file = NULL;
+		(*j) = 1;
 	}
 	else if (ft_strcmp(cub->split_file[0], "WE") == 0 && !cub->face_WE)
 	{	
 		cub->face_WE = ft_strdup(cub->split_file[1]);
+		tmp = cub->face_WE;
+		cub->face_WE = ft_strtrim(cub->face_WE, "\n");
+		free(tmp);
 		free_array(cub->split_file);
 		cub->split_file = NULL;
+		(*j) = 1;
 	}
 	else if (ft_strcmp(cub->split_file[0], "C") == 0 && !cub->colors_celling)
 	{	
 		cub->colors_celling = ft_strdup(cub->split_file[1]);
+		tmp = cub->colors_celling;
+		cub->colors_celling = ft_strtrim(cub->colors_celling, "\n");
+		free(tmp);
 		free_array(cub->split_file);
 		cub->split_file = NULL;
+		(*j) = 1;
 	}
 	else if (ft_strcmp(cub->split_file[0], "F") == 0 && !cub->colors_floor)
 	{	
 		cub->colors_floor = ft_strdup(cub->split_file[1]);
+		tmp = cub->colors_floor;
+		cub->colors_floor = ft_strtrim(cub->colors_floor, "\n");
+		free(tmp);
 		free_array(cub->split_file);
 		cub->split_file = NULL;
+		(*j) = 1;
 	}
 }
 
@@ -116,11 +142,13 @@ int	read_textures_colors(t_cub *cub)
 {
 	int		i;
 	int		j;
+	int		k;
 
 	i = 0;
-	j = 0;
+	k = 0;
 	while (cub->file[i])
 	{
+		j = 0;
 		cub->split_file = ft_split_tab_space(cub->file[i]);
 		if (!cub->split_file || !cub->split_file[0])
 		{
@@ -128,51 +156,30 @@ int	read_textures_colors(t_cub *cub)
 			free_array(cub->split_file);
 			continue ;
 		}
-		has_textures(cub);
-		if (!cub->split_file || !cub->split_file[0])
-		{
-			i++;
-			continue ;
-		}
-		free_array(cub->split_file);
+		has_textures(cub, &j);
+		if (!j && ft_strchr(cub->split_file[0], '1'))
+			cub->map[k++] = ft_strdup(cub->file[i]);
+		if (cub->split_file && cub->split_file[0])
+			free_array(cub->split_file);
 		i++;
 	}
+	cub->map[k] = NULL;
 	return (0);
 }
 
-int	is_map_line(char *line)
-{
-	int	i;
+// int	is_map_line(char *line)
+// {
+// 	int	i;
 
-	i = 0;
-	while (line[i] != '\0')
-	{
-		if (line[i] != '1' && line[i] != '0' && line[i] != ' ' &&
-			line[i] != 'N' && line[i] != 'S' && line[i] != 'E' &&
-			line[i] != 'W' && line[i] != '\n' && line[i] != '\t')
-			return (0);
-		i++;
-	}
-	return (1);
-}
+// 	i = 0;
+// 	while (line[i] != '\0')
+// 	{
+// 		if (line[i] != '1' && line[i] != '0' && line[i] != ' ' &&
+// 			line[i] != 'N' && line[i] != 'S' && line[i] != 'E' &&
+// 			line[i] != 'W' && line[i] != '\n' && line[i] != '\t')
+// 			return (0);
+// 		i++;
+// 	}
+// 	return (1);
+// }
 
-int	read_map(t_cub *cub)
-{
-	int	i;
-	int	j;
-
-	i = 0;
-	j = 0;
-	while (cub->file[i])
-	{
-		if (is_map_line(cub->file[i]))
-		{
-			
-			cub->map[j] = ft_strdup(cub->file[i]);
-			j++;
-		}
-		i++;
-	}
-	cub->map[j] = NULL;
-	return (0);
-}

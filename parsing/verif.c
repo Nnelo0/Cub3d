@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   verif.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ebroudic <ebroudic@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nnelo <nnelo@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/17 13:17:09 by ebroudic          #+#    #+#             */
-/*   Updated: 2025/03/17 15:54:28 by ebroudic         ###   ########.fr       */
+/*   Updated: 2025/03/17 18:15:42 by nnelo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,10 +40,8 @@ int verif_NO(t_cub *cub)
 	{
 		print_error(GREEN,"",
 			"Missing <NORTH> textures\n\033[1;33m<usage>: NO ./path_to_the_north_texture", "");
-		type = -1;
+		return (type = -1);
 	}
-	// free(cub->face_NO);
-	// cub->face_NO = ft_strdup("./textures/pizza.xpm");
 	if (verif_textures_exists(cub, cub->face_NO, cub->img_NO, "NO") == -1)
 		type = -1;
 	return (type);
@@ -58,8 +56,10 @@ int verif_SO(t_cub *cub)
 	{
 		print_error(GREEN, "",
 			"Missing <SOUTH> textures\n\033[1;33m<usage>: SO ./path_to_the_south_texture", "");
-		type = -1;
+		return (type = -1);
 	}
+	if (verif_textures_exists(cub, cub->face_SO, cub->img_SO, "SO") == -1)
+		type = -1;
 	return (type);
 }
 
@@ -72,8 +72,10 @@ int verif_WE(t_cub *cub)
 	{
 		print_error(GREEN, "",
 			"Missing <WEST> textures\n\033[1;33m<usage>: WE ./path_to_the_west_texture", "");
-		type = -1;
+		return (type = -1);
 	}
+	if (verif_textures_exists(cub, cub->face_WE, cub->img_WE, "WE") == -1)
+		type = -1;
 	return (type);
 }
 
@@ -86,8 +88,10 @@ int verif_EA(t_cub *cub)
 	{
 		print_error(GREEN, "",
 			"Missing <EAST> textures\n\033[1;33m<usage>: EA ./path_to_the_east_texture", "");
-		type = -1;
+		return (type = -1);
 	}
+	if (verif_textures_exists(cub, cub->face_EA, cub->img_EA, "EA") == -1)
+		type = -1;
 	return (type);
 }
 
@@ -100,7 +104,7 @@ int verif_C(t_cub *cub)
 	{
 		print_error(GREEN,"", "Missing <CELLING> colors\n\033[1;33m<usage>: C <R>, \
 <G>, <B>", "");
-		type = -1;
+		return (type = -1);
 	}
 	return (type);
 }
@@ -114,7 +118,7 @@ int verif_F(t_cub *cub)
 	{
 		print_error(GREEN,"", "Missing <FLOOR> colors\n\033[1;33m<usage>: F <R>,\
 <G>, <B>", "");
-		type = -1;
+		return (type = -1);
 	}
 	return (type);
 }
@@ -156,7 +160,7 @@ int	verif_map(t_cub *cub)
 	{
 		print_error(GREEN, "", "Missing <MAP>\n\033[1;33m<usage>: 1 for wall, \
 0 for empty spaces, [N][S][E][W] for player", "");
-		type = -1;
+		return (type = -1);
 	}
 	return (type);
 }
@@ -171,6 +175,6 @@ int	verif(t_cub *cub)
 	if (verif_colors(cub) == -1)
 		type = -1;
 	if (verif_map(cub) == -1)
-		return (-1);
+		type = -1;
 	return (type);
 }

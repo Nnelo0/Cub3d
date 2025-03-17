@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ebroudic <ebroudic@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nnelo <nnelo@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/13 09:12:28 by ebroudic          #+#    #+#             */
-/*   Updated: 2025/03/17 15:45:49 by ebroudic         ###   ########.fr       */
+/*   Updated: 2025/03/17 20:07:57 by nnelo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,10 +35,10 @@ typedef struct s_cub
 	char	*face_SO;
 	char	*face_EA;
 	char	*face_WE;
-	char	*img_NO;
-	char	*img_SO;
-	char	*img_EA;
-	char	*img_WE;
+	void	*img_NO;
+	void	*img_SO;
+	void	*img_EA;
+	void	*img_WE;
 	char	*colors_celling;
 	char	*colors_floor;
 	char	**map;
@@ -48,7 +48,6 @@ int		read_file(char *filename, t_cub *cub);
 int		read_textures_colors(t_cub *cub);
 void	free_array(char **arg);
 char	**ft_split_tab_space(char const *s);
-int		read_map(t_cub *cub);
 int		count_lines(char *filename);
 int		verif(t_cub *cub);
 

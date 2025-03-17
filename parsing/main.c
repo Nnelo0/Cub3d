@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ebroudic <ebroudic@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nnelo <nnelo@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/03 09:01:29 by ebroudic          #+#    #+#             */
-/*   Updated: 2025/03/17 15:29:55 by ebroudic         ###   ########.fr       */
+/*   Updated: 2025/03/17 20:09:56 by nnelo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -128,7 +128,6 @@ int	main(int argc, char **argv)
 		if (init_cub(&cub, argv) == -1)
 			return (2);
 		read_textures_colors(&cub);
-		read_map(&cub);
 		display_parsing(&cub);
 		if (verif(&cub) == -1)
 			return (2);
