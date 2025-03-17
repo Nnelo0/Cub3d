@@ -6,7 +6,7 @@
 /*   By: ebroudic <ebroudic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/13 09:12:28 by ebroudic          #+#    #+#             */
-/*   Updated: 2025/03/14 17:16:22 by ebroudic         ###   ########.fr       */
+/*   Updated: 2025/03/17 13:18:28 by ebroudic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,4 +46,6 @@ void	free_array(char **arg);
 char	**ft_split_tab_space(char const *s);
 int		read_map(t_cub *cub);
 int		count_lines(char *filename);
+int		verif(t_cub *cub);
+
 #endif

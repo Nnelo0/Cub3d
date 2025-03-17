@@ -6,7 +6,7 @@
 /*   By: ebroudic <ebroudic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/05 15:46:02 by ebroudic          #+#    #+#             */
-/*   Updated: 2025/03/14 17:13:29 by ebroudic         ###   ########.fr       */
+/*   Updated: 2025/03/17 13:16:24 by ebroudic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,6 +71,7 @@ int	read_file(char *filename, t_cub *cub)
 	close (fd);
 	return (0);
 }
+
 void	has_textures(t_cub *cub)
 {
 	if (ft_strcmp(cub->split_file[0], "NO") == 0 && !cub->face_NO)
@@ -124,6 +125,7 @@ int	read_textures_colors(t_cub *cub)
 		if (!cub->split_file || !cub->split_file[0])
 		{
 			i++;
+			free_array(cub->split_file);
 			continue ;
 		}
 		has_textures(cub);
@@ -137,6 +139,7 @@ int	read_textures_colors(t_cub *cub)
 	}
 	return (0);
 }
+
 int	is_map_line(char *line)
 {
 	int	i;
@@ -146,7 +149,7 @@ int	is_map_line(char *line)
 	{
 		if (line[i] != '1' && line[i] != '0' && line[i] != ' ' &&
 			line[i] != 'N' && line[i] != 'S' && line[i] != 'E' &&
-			line[i] != 'W' && line[i] != '\n')
+			line[i] != 'W' && line[i] != '\n' && line[i] != '\t')
 			return (0);
 		i++;
 	}
@@ -164,10 +167,12 @@ int	read_map(t_cub *cub)
 	{
 		if (is_map_line(cub->file[i]))
 		{
+			
 			cub->map[j] = ft_strdup(cub->file[i]);
 			j++;
 		}
 		i++;
 	}
+	cub->map[j] = NULL;
 	return (0);
 }
