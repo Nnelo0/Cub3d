@@ -6,7 +6,7 @@
 /*   By: ebroudic <ebroudic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/17 13:17:09 by ebroudic          #+#    #+#             */
-/*   Updated: 2025/03/17 13:31:24 by ebroudic         ###   ########.fr       */
+/*   Updated: 2025/03/17 13:43:57 by ebroudic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,9 +49,9 @@ int	verif(t_cub *cub)
 {
 	if (verif_textures(cub) == -1)
 		return (-1);
-	// if (verif_colors(cub) == -1)
-	// 	return (-1);
-	// if (verif_map(cub) == -1)
-	// 	return (-1);
+	if (verif_colors(cub) == -1)
+		return (-1);
+	if (verif_map(cub) == -1)
+		return (-1);
 	return (0);
 }
