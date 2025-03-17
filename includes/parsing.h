@@ -6,7 +6,7 @@
 /*   By: ebroudic <ebroudic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/13 09:12:28 by ebroudic          #+#    #+#             */
-/*   Updated: 2025/03/17 13:18:28 by ebroudic         ###   ########.fr       */
+/*   Updated: 2025/03/17 15:45:49 by ebroudic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,10 @@ typedef struct s_cub
 	char	*face_SO;
 	char	*face_EA;
 	char	*face_WE;
+	char	*img_NO;
+	char	*img_SO;
+	char	*img_EA;
+	char	*img_WE;
 	char	*colors_celling;
 	char	*colors_floor;
 	char	**map;

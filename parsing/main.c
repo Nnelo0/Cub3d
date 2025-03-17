@@ -6,11 +6,28 @@
 /*   By: ebroudic <ebroudic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/03 09:01:29 by ebroudic          #+#    #+#             */
-/*   Updated: 2025/03/17 13:25:10 by ebroudic         ###   ########.fr       */
+/*   Updated: 2025/03/17 15:29:55 by ebroudic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/parsing.h"
+
+// au cas ou pour ouvrir une fenetre : a mettre dans le main if (window(&cub) == -1) return (2);mlx_loop(cub.mlx_ptr); 
+// int	close_window(t_cub *cub)
+// {
+// 	mlx_destroy_window(cub->mlx_ptr, cub->win_ptr);
+// 	mlx_destroy_display(cub->mlx_ptr);
+// 	return (0);
+// }
+
+// int	window(t_cub *cub)
+// {
+// 	cub->win_ptr = mlx_new_window(cub->mlx_ptr, 920, 720, "cub3D");
+// 	if (!cub->win_ptr)
+// 		return (free(cub->mlx_ptr), -1);
+// 	mlx_hook(cub->win_ptr, 17, 0, close_window, cub);
+// 	return (0);
+// }
 
 int	verif_cub(char **argv)
 {
@@ -64,6 +81,7 @@ int init_cub(t_cub *cub, char **argv)
 	cub->map = malloc(sizeof(char *) * (j + 1));
 	if (!cub->map)
 		return (printf("Error\n Malloc failed"), -1);
+	cub->mlx_ptr = mlx_init();
 	return (0);
 }
 
