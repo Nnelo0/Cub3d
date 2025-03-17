@@ -6,7 +6,7 @@
 /*   By: lelanglo <lelanglo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/13 09:01:29 by lelanglo          #+#    #+#             */
-/*   Updated: 2025/03/13 12:20:49 by lelanglo         ###   ########.fr       */
+/*   Updated: 2025/03/17 15:06:47 by lelanglo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,10 @@ int	handle_close(t_data *data)
 	int	i;
 
 	i = 0;
-	mlx_destroy_window(data->mlx, data->window);
+	mlx_destroy_window(data->mlx, data->win);
 	mlx_destroy_display(data->mlx);
 	free(data->mlx);
-	while(data->map[i])
+	while (data->map[i])
 		free(data->map[i++]);
 	free(data->map);
 	exit(0);
@@ -56,9 +56,9 @@ int	main(void)
 
 	read_map(&data);
 	data.mlx = mlx_init();
-	data.window = mlx_new_window(data.mlx, 1800, 900, "cube3d");
-	mlx_hook(data.window, 17, 0, handle_close, &data);
-	mlx_key_hook(data.window, handle_key, &data);
+	data.win = mlx_new_window(data.mlx, WIDTH, HEIGHT, "cube3d");
+	mlx_hook(data.win, 17, 0, handle_close, &data);
+	mlx_key_hook(data.win, handle_key, &data);
 	mlx_loop(data.mlx);
 	return (0);
 }
