@@ -6,7 +6,7 @@
 /*   By: ebroudic <ebroudic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/14 10:29:59 by ebroudic          #+#    #+#             */
-/*   Updated: 2025/03/17 11:25:55 by ebroudic         ###   ########.fr       */
+/*   Updated: 2025/03/17 14:45:45 by ebroudic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,8 +38,7 @@ char	**ft_split_tab_space(char const *s)
 	dsa[1] = ft_strdup(s + i);
 	if (!dsa[1])
 		return (free(dsa[0]), free(dsa), NULL);
-	dsa[2] = NULL;
-	return (dsa);
+	return (dsa[2] = NULL, dsa);
 }
 
 // int main()
