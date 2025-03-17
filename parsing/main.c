@@ -6,7 +6,7 @@
 /*   By: nnelo <nnelo@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/03 09:01:29 by ebroudic          #+#    #+#             */
-/*   Updated: 2025/03/17 20:09:56 by nnelo            ###   ########.fr       */
+/*   Updated: 2025/03/17 21:53:35 by nnelo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,19 +66,21 @@ void	free_array(char **arg)
 
 int init_cub(t_cub *cub, char **argv)
 {
-	int	j;
-
 	cub->face_NO = NULL;
 	cub->face_SO = NULL;
 	cub->face_WE = NULL;
 	cub->face_EA = NULL;
+	cub->img_NO = NULL;
+	cub->img_SO = NULL;
+	cub->img_WE = NULL;
+	cub->img_EA = NULL;
 	cub->colors_celling = NULL;
 	cub->colors_floor = NULL;
 	cub->split_file = NULL;
-	j = count_lines(argv[1]);
-	if (j == -1)
+	cub->line_in_file = count_lines(argv[1]);
+	if (cub->line_in_file == -1)
 		return (-1);
-	cub->map = malloc(sizeof(char *) * (j + 1));
+	cub->map = malloc(sizeof(char *) * (cub->line_in_file + 1));
 	if (!cub->map)
 		return (printf("Error\n Malloc failed"), -1);
 	cub->mlx_ptr = mlx_init();
@@ -87,7 +89,7 @@ int init_cub(t_cub *cub, char **argv)
 
 void	display_parsing(t_cub *cub)
 {
-	printf(RED "\n\n--------------------ALL_FILE--------------------\n\n" RESET);	
+	printf(RED "\n\n--------------------ALL_FILE--------------------\n\n" RESET);
 	for (int i = 0; cub->file[i]; i++)
 		printf("%s", cub->file[i]);
 	printf(RED "\n\n-----------------TEXTURE_COLORS-----------------\n\n" RESET);
@@ -97,9 +99,10 @@ void	display_parsing(t_cub *cub)
 	printf("EA: %s\n", cub->face_EA);
 	printf("FLOOR: %s\n", cub->colors_floor);
 	printf("CELL: %s\n", cub->colors_celling);
-	printf(RED "\n\n-----------------------MAP----------------------\n\n" RESET);
+	printf(RED "\n\n------------------MAP(pas de \\n)---------------\n\n" RESET);
 	for (int i = 0; cub->map[i]; i++)
-		printf("%s", cub->map[i]);
+		printf("%s\n", cub->map[i]);
+	printf(RED "\n\n-----------------------ERROR--------------------\n\n" RESET);
 }
 
 void	free_all(t_cub *cub)
@@ -112,6 +115,11 @@ void	free_all(t_cub *cub)
 	free(cub->face_EA);
 	free(cub->colors_floor);
 	free(cub->colors_celling);
+	if (cub->mlx_ptr)
+	{
+		mlx_destroy_display(cub->mlx_ptr);
+		free(cub->mlx_ptr);
+	}
 }
 
 int	main(int argc, char **argv)

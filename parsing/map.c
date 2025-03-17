@@ -6,7 +6,7 @@
 /*   By: nnelo <nnelo@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/05 15:46:02 by ebroudic          #+#    #+#             */
-/*   Updated: 2025/03/17 20:11:29 by nnelo            ###   ########.fr       */
+/*   Updated: 2025/03/17 20:45:24 by nnelo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -143,6 +143,7 @@ int	read_textures_colors(t_cub *cub)
 	int		i;
 	int		j;
 	int		k;
+	char	*tmp;
 
 	i = 0;
 	k = 0;
@@ -158,7 +159,13 @@ int	read_textures_colors(t_cub *cub)
 		}
 		has_textures(cub, &j);
 		if (!j && ft_strchr(cub->split_file[0], '1'))
-			cub->map[k++] = ft_strdup(cub->file[i]);
+		{
+			cub->map[k] = ft_strdup(cub->file[i]);
+			tmp = cub->map[k];
+			cub->map[k] = ft_strtrim(cub->map[k], "\n");
+			free(tmp);
+			k++;
+		}
 		if (cub->split_file && cub->split_file[0])
 			free_array(cub->split_file);
 		i++;
@@ -166,20 +173,3 @@ int	read_textures_colors(t_cub *cub)
 	cub->map[k] = NULL;
 	return (0);
 }
-
-// int	is_map_line(char *line)
-// {
-// 	int	i;
-
-// 	i = 0;
-// 	while (line[i] != '\0')
-// 	{
-// 		if (line[i] != '1' && line[i] != '0' && line[i] != ' ' &&
-// 			line[i] != 'N' && line[i] != 'S' && line[i] != 'E' &&
-// 			line[i] != 'W' && line[i] != '\n' && line[i] != '\t')
-// 			return (0);
-// 		i++;
-// 	}
-// 	return (1);
-// }
-
