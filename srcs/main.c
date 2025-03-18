@@ -6,7 +6,7 @@
 /*   By: lelanglo <lelanglo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/13 09:01:29 by lelanglo          #+#    #+#             */
-/*   Updated: 2025/03/18 13:26:38 by lelanglo         ###   ########.fr       */
+/*   Updated: 2025/03/18 13:31:55 by lelanglo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,17 +25,6 @@ int render(t_data *data)
     return (0);
 }
 
-void destroy_image(t_data *data)
-{
-    if (data->img)
-    {
-        mlx_destroy_image(data->mlx, data->img);
-        data->img = NULL;
-    }
-}
-
-
-
 int	handle_close(t_data *data)
 {
 	int	i;
@@ -50,19 +39,6 @@ int	handle_close(t_data *data)
 	free(data->map);
 	exit(0);
 	return (0);
-}
-
-void	turn(t_data *data, int sens)
-{
-	double	old_dirx;
-	double	old_planex;
-
-	old_dirx = data->player.dir_x;
-	data->player.dir_x = data->player.dir_x * cos((double)ROTATE * sens) - data->player.dir_y * sin((double)ROTATE * sens);
-	data->player.dir_y = old_dirx * sin((double)ROTATE * sens) + data->player.dir_y * cos((double)ROTATE * sens);
-	old_planex = data->player.plane_x;
-	data->player.plane_x = data->player.plane_x * cos((double)ROTATE * sens) - data->player.plane_y * sin((double)ROTATE * sens);
-	data->player.plane_y = old_planex * sin((double)ROTATE * sens) + data->player.plane_y * cos((double)ROTATE * sens);
 }
 
 int	handle_key(int keycode, t_data *data)
