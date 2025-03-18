@@ -6,7 +6,7 @@
 /*   By: lelanglo <lelanglo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/13 09:03:21 by lelanglo          #+#    #+#             */
-/*   Updated: 2025/03/18 14:46:41 by lelanglo         ###   ########.fr       */
+/*   Updated: 2025/03/18 14:53:55 by lelanglo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,4 +56,5 @@ void	cast_rays(t_data *data);
 void	turn(t_data *data, int sens);
 void	destroy_image(t_data *data);
 void	move(t_data *data, int sens);
+void	left_right(t_data *data, int sens);
 #endif

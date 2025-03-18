@@ -6,7 +6,7 @@
 /*   By: lelanglo <lelanglo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/13 09:01:29 by lelanglo          #+#    #+#             */
-/*   Updated: 2025/03/18 14:46:08 by lelanglo         ###   ########.fr       */
+/*   Updated: 2025/03/18 14:55:14 by lelanglo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,10 @@ int	handle_key(int keycode, t_data *data)
 		move(data, 1);
 	else if (keycode == 's')
 		move(data, -1);
+	else if (keycode == 'a')
+		left_right(data, -1);
+	else if (keycode == 'd')
+		left_right(data, 1);
 	return (0);
 }
 
