@@ -6,7 +6,7 @@
 /*   By: lelanglo <lelanglo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/13 09:03:21 by lelanglo          #+#    #+#             */
-/*   Updated: 2025/03/17 15:08:46 by lelanglo         ###   ########.fr       */
+/*   Updated: 2025/03/18 12:40:16 by lelanglo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,11 @@
 # include <unistd.h>
 # include <math.h>
 # include "libft/libft.h"
+# include "libft/printf/ft_printf.h"
 
 # define WIDTH 1800
 # define HEIGHT 900
+# define ROTATE 0.0872665
 
 typedef struct s_player
 {
@@ -49,5 +51,6 @@ typedef struct s_data
 int		handle_close(t_data *data);
 int		handle_key(int keycode, t_data *data);
 int		read_map(t_data *data);
+void	cast_rays(t_data *data);
 
 #endif
