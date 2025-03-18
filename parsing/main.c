@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nnelo <nnelo@student.42.fr>                +#+  +:+       +#+        */
+/*   By: ebroudic <ebroudic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/03 09:01:29 by ebroudic          #+#    #+#             */
-/*   Updated: 2025/03/17 21:53:35 by nnelo            ###   ########.fr       */
+/*   Updated: 2025/03/18 09:28:42 by ebroudic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,14 +66,14 @@ void	free_array(char **arg)
 
 int init_cub(t_cub *cub, char **argv)
 {
-	cub->face_NO = NULL;
-	cub->face_SO = NULL;
-	cub->face_WE = NULL;
-	cub->face_EA = NULL;
-	cub->img_NO = NULL;
-	cub->img_SO = NULL;
-	cub->img_WE = NULL;
-	cub->img_EA = NULL;
+	cub->face_no = NULL;
+	cub->face_so = NULL;
+	cub->face_we = NULL;
+	cub->face_ea = NULL;
+	cub->img_no = NULL;
+	cub->img_so = NULL;
+	cub->img_we = NULL;
+	cub->img_ea = NULL;
 	cub->colors_celling = NULL;
 	cub->colors_floor = NULL;
 	cub->split_file = NULL;
@@ -93,10 +93,10 @@ void	display_parsing(t_cub *cub)
 	for (int i = 0; cub->file[i]; i++)
 		printf("%s", cub->file[i]);
 	printf(RED "\n\n-----------------TEXTURE_COLORS-----------------\n\n" RESET);
-	printf("NO: %s\n", cub->face_NO);
-	printf("SO: %s\n", cub->face_SO);
-	printf("WE: %s\n", cub->face_WE);
-	printf("EA: %s\n", cub->face_EA);
+	printf("NO: %s\n", cub->face_no);
+	printf("SO: %s\n", cub->face_so);
+	printf("WE: %s\n", cub->face_we);
+	printf("EA: %s\n", cub->face_ea);
 	printf("FLOOR: %s\n", cub->colors_floor);
 	printf("CELL: %s\n", cub->colors_celling);
 	printf(RED "\n\n------------------MAP(pas de \\n)---------------\n\n" RESET);
@@ -109,10 +109,10 @@ void	free_all(t_cub *cub)
 {
 	free_array(cub->file);
 	free_array(cub->map);
-	free(cub->face_NO);
-	free(cub->face_SO);
-	free(cub->face_WE);
-	free(cub->face_EA);
+	free(cub->face_no);
+	free(cub->face_so);
+	free(cub->face_we);
+	free(cub->face_ea);
 	free(cub->colors_floor);
 	free(cub->colors_celling);
 	if (cub->mlx_ptr)

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nnelo <nnelo@student.42.fr>                +#+  +:+       +#+        */
+/*   By: ebroudic <ebroudic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/13 09:12:28 by ebroudic          #+#    #+#             */
-/*   Updated: 2025/03/17 21:45:59 by nnelo            ###   ########.fr       */
+/*   Updated: 2025/03/18 15:28:58 by ebroudic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,20 +31,22 @@ typedef struct s_cub
 	void	*win_ptr;
 	char	**file;
 	char	**split_file;
-	char	*face_NO;
-	char	*face_SO;
-	char	*face_EA;
-	char	*face_WE;
-	void	*img_NO;
-	void	*img_SO;
-	void	*img_EA;
-	void	*img_WE;
+	char	*face_no;
+	char	*face_so;
+	char	*face_ea;
+	char	*face_we;
+	void	*img_no;
+	void	*img_so;
+	void	*img_ea;
+	void	*img_we;
 	char	*colors_celling;
 	char	*colors_floor;
 	char	**map;
 	int		player_x;
 	int		player_y;
 	int		line_in_file;
+	int		colors_c;
+	int		colors_f;
 }				t_cub;
 
 int		read_file(char *filename, t_cub *cub);
