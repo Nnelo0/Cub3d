@@ -6,23 +6,23 @@
 /*   By: lelanglo <lelanglo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/13 09:01:29 by lelanglo          #+#    #+#             */
-/*   Updated: 2025/03/18 14:55:14 by lelanglo         ###   ########.fr       */
+/*   Updated: 2025/03/18 15:23:21 by lelanglo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cube3d.h"
 
-int render(t_data *data)
+int	render(t_data *data)
 {
-    if (!data->img)
-    {
-        data->img = mlx_new_image(data->mlx, WIDTH, HEIGHT);
-        data->img_data = (int *)mlx_get_data_addr(data->img, &data->bpp,
-                                                  &data->size_line, &data->endian);
-    }
-    cast_rays(data);
-    mlx_put_image_to_window(data->mlx, data->win, data->img, 0, 0);
-    return (0);
+	if (!data->img)
+	{
+		data->img = mlx_new_image(data->mlx, WIDTH, HEIGHT);
+		data->img_data = (int *)mlx_get_data_addr(data->img, &data->bpp,
+				&data->size_line, &data->endian);
+	}
+	cast_rays(data);
+	mlx_put_image_to_window(data->mlx, data->win, data->img, 0, 0);
+	return (0);
 }
 
 int	handle_close(t_data *data)
