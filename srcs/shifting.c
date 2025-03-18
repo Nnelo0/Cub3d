@@ -6,7 +6,7 @@
 /*   By: lelanglo <lelanglo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/18 13:29:11 by lelanglo          #+#    #+#             */
-/*   Updated: 2025/03/18 13:33:52 by lelanglo         ###   ########.fr       */
+/*   Updated: 2025/03/18 14:46:21 by lelanglo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ void	turn(t_data *data, int sens)
 	double	old_dirx;
 	double	old_planex;
 
+	destroy_image(data);
 	old_dirx = data->player.dir_x;
 	data->player.dir_x = data->player.dir_x * cos((double)ROTATE * sens)
 		- data->player.dir_y * sin((double)ROTATE * sens);
@@ -36,4 +37,11 @@ void	turn(t_data *data, int sens)
 		- data->player.plane_y * sin((double)ROTATE * sens);
 	data->player.plane_y = old_planex * sin((double)ROTATE * sens)
 		+ data->player.plane_y * cos((double)ROTATE * sens);
+}
+
+void	move(t_data *data, int sens)
+{
+	destroy_image(data);
+	data->player.x += data->player.dir_x * (double)SPEED * sens;
+	data->player.y += data->player.dir_y * (double)SPEED * sens;
 }

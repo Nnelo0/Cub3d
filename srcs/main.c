@@ -6,7 +6,7 @@
 /*   By: lelanglo <lelanglo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/13 09:01:29 by lelanglo          #+#    #+#             */
-/*   Updated: 2025/03/18 13:31:55 by lelanglo         ###   ########.fr       */
+/*   Updated: 2025/03/18 14:46:08 by lelanglo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,15 +46,13 @@ int	handle_key(int keycode, t_data *data)
 	if (keycode == 65307)
 		handle_close(data);
 	else if (keycode == 65363)
-	{
-		destroy_image(data);
 		turn(data, 1);
-	}
 	else if (keycode == 65361)
-	{
-		destroy_image(data);
 		turn(data, -1);
-	}
+	else if (keycode == 'w')
+		move(data, 1);
+	else if (keycode == 's')
+		move(data, -1);
 	return (0);
 }
 
