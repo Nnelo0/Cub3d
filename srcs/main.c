@@ -6,48 +6,14 @@
 /*   By: lelanglo <lelanglo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/13 09:01:29 by lelanglo          #+#    #+#             */
-/*   Updated: 2025/03/17 15:25:25 by lelanglo         ###   ########.fr       */
+/*   Updated: 2025/03/18 13:11:20 by lelanglo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cube3d.h"
 
-void	put_pixel(t_data *data, int x, int y, int color)
-{
-	if (x >= 0 && x < WIDTH && y >= 0 && y < HEIGHT)
-		data->img_data[y * (data->size_line / 4) + x] = color;
-}
-
-static void	init_raycast_vars(t_data *data, int x, double *ray_dir_x, 
-		double *ray_dir_y)
-{
-	double	camera_x;
-
-	camera_x = 2 * x / (double)WIDTH - 1;
-	*ray_dir_x = data->player.dir_x + data->player.plane_x * camera_x;
-	*ray_dir_y = data->player.dir_y + data->player.plane_y * camera_x;
-}
-
-void	cast_rays(t_data *data)
-{
-	int		x;
-	double	ray_dir_x;
-	double	ray_dir_y;
-	int		color;
-
-	x = -1;
-	while (++x < WIDTH)
-	{
-		init_raycast_vars(data, x, &ray_dir_x, &ray_dir_y);
-		color = 0x008000;
-		for (int y = HEIGHT / 4; y < HEIGHT * 3 / 4; y++)
-			put_pixel(data, x, y, color);
-	}
-}
-
 int	render(t_data *data)
 {
-	mlx_clear_window(data->mlx, data->win);
 	cast_rays(data);
 	mlx_put_image_to_window(data->mlx, data->win, data->img, 0, 0);
 	return (0);
@@ -68,10 +34,31 @@ int	handle_close(t_data *data)
 	return (0);
 }
 
+void	turn(t_data *data, int sens)
+{
+	double	old_dirx;
+	double	old_planex;
+
+	old_dirx = data->player.dir_x;
+	data->player.dir_x = data->player.dir_x * cos((double)ROTATE * sens) - data->player.dir_y * sin((double)ROTATE * sens);
+	data->player.dir_y = old_dirx * sin((double)ROTATE * sens) + data->player.dir_y * cos((double)ROTATE * sens);
+	old_planex = data->player.plane_x;
+	data->player.plane_x = data->player.plane_x * cos((double)ROTATE * sens) - data->player.plane_y * sin((double)ROTATE * sens);
+	data->player.plane_y = old_planex * sin((double)ROTATE * sens) + data->player.plane_y * cos((double)ROTATE * sens);
+}
+
 int	handle_key(int keycode, t_data *data)
 {
 	if (keycode == 65307)
 		handle_close(data);
+	else if (keycode == 65363)
+	{
+		turn(data, 1);
+	}
+	else if (keycode == 65361)
+	{
+		turn(data, -1);
+	}
 	return (0);
 }
 
