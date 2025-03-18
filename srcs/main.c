@@ -6,24 +6,42 @@
 /*   By: lelanglo <lelanglo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/13 09:01:29 by lelanglo          #+#    #+#             */
-/*   Updated: 2025/03/18 13:11:20 by lelanglo         ###   ########.fr       */
+/*   Updated: 2025/03/18 13:26:38 by lelanglo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cube3d.h"
 
-int	render(t_data *data)
+int render(t_data *data)
 {
-	cast_rays(data);
-	mlx_put_image_to_window(data->mlx, data->win, data->img, 0, 0);
-	return (0);
+    if (!data->img)
+    {
+        data->img = mlx_new_image(data->mlx, WIDTH, HEIGHT);
+        data->img_data = (int *)mlx_get_data_addr(data->img, &data->bpp,
+                                                  &data->size_line, &data->endian);
+    }
+    cast_rays(data);
+    mlx_put_image_to_window(data->mlx, data->win, data->img, 0, 0);
+    return (0);
 }
+
+void destroy_image(t_data *data)
+{
+    if (data->img)
+    {
+        mlx_destroy_image(data->mlx, data->img);
+        data->img = NULL;
+    }
+}
+
+
 
 int	handle_close(t_data *data)
 {
 	int	i;
 
 	i = 0;
+	mlx_destroy_image(data->mlx, data->img);
 	mlx_destroy_window(data->mlx, data->win);
 	mlx_destroy_display(data->mlx);
 	free(data->mlx);
@@ -53,10 +71,12 @@ int	handle_key(int keycode, t_data *data)
 		handle_close(data);
 	else if (keycode == 65363)
 	{
+		destroy_image(data);
 		turn(data, 1);
 	}
 	else if (keycode == 65361)
 	{
+		destroy_image(data);
 		turn(data, -1);
 	}
 	return (0);
