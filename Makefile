@@ -12,7 +12,7 @@ OBJDIR = obj
 LIBFTDIR = libft
 MINILIBXDIR = minilibx-linux
 
-SRCS = $(SRCDIR)/main.c $(SRCDIR)/map.c $(SRCDIR)/split_tab_space.c \
+SRCS = $(SRCDIR)/main.c $(SRCDIR)/read_files.c $(SRCDIR)/split_tab_space.c \
 $(SRCDIR)/verif.c $(SRCDIR)/verif_map.c $(SRCDIR)/verif_textures.c \
 $(SRCDIR)/verif_colors.c $(SRCDIR)/parsing_utils.c $(SRCDIR)/verif_colors_utils.c \
 

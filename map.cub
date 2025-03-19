@@ -2,6 +2,8 @@ NO ./textures/pizza.xpm
 SO ./textures/road.xpm	
 WE ./textures/wall2.xpm
 EA ./textures/wall2.xpm
+EA ./textures/wal2l2.xpm
+EA ./textures/wall2222.xpm
 F 100,170,255 
 C 150,150,150    
 
