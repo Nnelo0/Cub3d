@@ -6,7 +6,7 @@
 /*   By: ebroudic <ebroudic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/05 15:46:02 by ebroudic          #+#    #+#             */
-/*   Updated: 2025/03/18 09:33:01 by ebroudic         ###   ########.fr       */
+/*   Updated: 2025/03/19 12:45:40 by ebroudic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,13 +77,7 @@ char	*ft_super_strtrim(char *str)
 	char	*tmp;
 
 	tmp = str;
-	str = ft_strtrim(str, "\n");
-	free(tmp);
-	tmp = str;
-	str = ft_strtrim(str, " ");
-	free(tmp);
-	tmp = str;
-	str = ft_strtrim(str, "\t");
+	str = ft_strtrim(str, "\n \t");
 	free(tmp);
 	return (str);
 }
@@ -126,7 +120,7 @@ void	has_textures(t_cub *cub, int *j)
 	else if (ft_strcmp(cub->split_file[0], "C") == 0 && !cub->colors_celling)
 	{	
 		cub->colors_celling = ft_strdup(cub->split_file[1]);
-		cub->colors_celling = ft_strtrim(cub->colors_celling, "\n");
+		cub->colors_celling = ft_super_strtrim(cub->colors_celling);
 		free_array(cub->split_file);
 		cub->split_file = NULL;
 		(*j) = 1;
@@ -134,7 +128,7 @@ void	has_textures(t_cub *cub, int *j)
 	else if (ft_strcmp(cub->split_file[0], "F") == 0 && !cub->colors_floor)
 	{	
 		cub->colors_floor = ft_strdup(cub->split_file[1]);
-		cub->colors_floor = ft_strtrim(cub->colors_floor, "\n");
+		cub->colors_floor = ft_super_strtrim(cub->colors_floor);
 		free_array(cub->split_file);
 		cub->split_file = NULL;
 		(*j) = 1;

@@ -6,7 +6,7 @@
 /*   By: ebroudic <ebroudic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/03 09:01:29 by ebroudic          #+#    #+#             */
-/*   Updated: 2025/03/18 09:28:42 by ebroudic         ###   ########.fr       */
+/*   Updated: 2025/03/19 13:11:53 by ebroudic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,6 +76,8 @@ int init_cub(t_cub *cub, char **argv)
 	cub->img_ea = NULL;
 	cub->colors_celling = NULL;
 	cub->colors_floor = NULL;
+	cub->colors_c = 0;
+	cub->colors_f = 0;
 	cub->split_file = NULL;
 	cub->line_in_file = count_lines(argv[1]);
 	if (cub->line_in_file == -1)
@@ -115,11 +117,16 @@ void	free_all(t_cub *cub)
 	free(cub->face_ea);
 	free(cub->colors_floor);
 	free(cub->colors_celling);
-	if (cub->mlx_ptr)
-	{
-		mlx_destroy_display(cub->mlx_ptr);
-		free(cub->mlx_ptr);
-	}
+	if (cub->img_no)
+        mlx_destroy_image(cub->mlx_ptr, cub->img_no);
+    if (cub->img_so)
+        mlx_destroy_image(cub->mlx_ptr, cub->img_so);
+    if (cub->img_we)
+        mlx_destroy_image(cub->mlx_ptr, cub->img_we);
+    if (cub->img_ea)
+		mlx_destroy_image(cub->mlx_ptr, cub->img_ea);
+	mlx_destroy_display(cub->mlx_ptr);
+	free(cub->mlx_ptr);
 }
 
 int	main(int argc, char **argv)
@@ -138,7 +145,9 @@ int	main(int argc, char **argv)
 		read_textures_colors(&cub);
 		display_parsing(&cub);
 		if (verif(&cub) == -1)
-			return (2);
+			return (free_all(&cub), 2);
+		printf("c in hex: %x\n", cub.colors_c);
+		printf("FLOOR in hex: %x\n", cub.colors_f);
 		free_all(&cub);
 		return (0);
 	}
