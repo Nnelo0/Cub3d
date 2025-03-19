@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ebroudic <ebroudic@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nnelo <nnelo@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/03 09:01:29 by ebroudic          #+#    #+#             */
-/*   Updated: 2025/03/19 15:13:49 by ebroudic         ###   ########.fr       */
+/*   Updated: 2025/03/19 18:26:33 by nnelo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -139,7 +139,7 @@ int	main(int argc, char **argv)
 	if (argc == 2)
 	{
 		if (verif_cub(argv))
-			return (printf(RED "filename must be finish with %s.cub\n" RESET
+			return (printf(RED "Error\nfilename must be finish with %s.cub\n" RESET
 					, GREEN), 2);
 		if (read_file(argv[1], &cub) == -1)
 			return (2);
