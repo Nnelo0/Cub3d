@@ -6,7 +6,7 @@
 /*   By: lelanglo <lelanglo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/19 12:50:19 by lelanglo          #+#    #+#             */
-/*   Updated: 2025/03/19 12:53:54 by lelanglo         ###   ########.fr       */
+/*   Updated: 2025/03/19 13:15:07 by lelanglo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 void	init_keys(t_data *data)
 {
 	int	i;
-	
+
 	i = 0;
 	while (i < 65365)
 		data->keys[i++] = 0;
