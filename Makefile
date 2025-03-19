@@ -12,9 +12,14 @@ OBJDIR = obj
 LIBFTDIR = libft
 MINILIBXDIR = minilibx-linux
 
-SRCS = $(SRCDIR)/main.c $(SRCDIR)/map.c $(SRCDIR)/split_tab_space.c $(SRCDIR)/verif.c
+SRCS = $(SRCDIR)/main.c $(SRCDIR)/map.c $(SRCDIR)/split_tab_space.c \
+$(SRCDIR)/verif.c $(SRCDIR)/verif_map.c $(SRCDIR)/verif_textures.c \
+$(SRCDIR)/verif_colors.c $(SRCDIR)/parsing_utils.c
+
 OBJS = $(SRCS:$(SRCDIR)/%.c=$(OBJDIR)/%.o)
+
 LIBFT = $(LIBFTDIR)/libft.a
+
 MINILIBX = $(MINILIBXDIR)/libmlx.a
 
 all: $(LIBFT) $(MINILIBX) $(NAME)

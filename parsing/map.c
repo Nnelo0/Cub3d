@@ -6,42 +6,11 @@
 /*   By: ebroudic <ebroudic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/05 15:46:02 by ebroudic          #+#    #+#             */
-/*   Updated: 2025/03/19 12:45:40 by ebroudic         ###   ########.fr       */
+/*   Updated: 2025/03/19 14:52:16 by ebroudic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/parsing.h"
-
-int	count_lines(char *filename)
-{
-	int		bit;
-	int		count;
-	int		fd;
-	char	c;
-	int		has_newline;
-
-	fd = open(filename, O_RDONLY);
-	count = 0;
-	bit = 1;
-	has_newline = 0;
-	c = 0;
-	while (bit)
-	{
-		bit = read(fd, &c, 1);
-		if (bit == -1)
-			return (ft_printf("Error\nCan't read the file\n"), close(fd), -1);
-		if (c == '\n')
-		{
-			count++;
-			has_newline = 1;
-		}
-		else
-			has_newline = 0;
-	}
-	if (!has_newline)
-		count++;
-	return (close(fd), count);
-}
 
 int	read_file(char *filename, t_cub *cub)
 {
@@ -50,7 +19,7 @@ int	read_file(char *filename, t_cub *cub)
 	int		fd;
 	char	*line;
 
-	j = count_lines(filename);
+	j = count_lines(filename, 1);
 	if (j == -1)
 		return (-1);
 	fd = open(filename, O_RDONLY);
@@ -82,68 +51,48 @@ char	*ft_super_strtrim(char *str)
 	return (str);
 }
 
+char	*read_path(char *str, t_cub *cub, int *j)
+{
+	str = ft_strdup(cub->split_file[1]);
+	str = ft_super_strtrim(str);
+	free_array(cub->split_file);
+	cub->split_file = NULL;
+	(*j) = 1;
+	return (str);
+}
+
 void	has_textures(t_cub *cub, int *j)
 {
-
 	if (ft_strcmp(cub->split_file[0], "NO") == 0 && !cub->face_no)
-	{	
-		cub->face_no = ft_strdup(cub->split_file[1]);
-		cub->face_no = ft_super_strtrim(cub->face_no);
-		free_array(cub->split_file);
-		cub->split_file = NULL;
-		(*j) = 1;
+	{
+		cub->face_no = read_path(cub->face_no, cub, j);
 	}
 	else if (ft_strcmp(cub->split_file[0], "SO") == 0 && !cub->face_so)
-	{	
-		cub->face_so = ft_strdup(cub->split_file[1]);
-		cub->face_so = ft_super_strtrim(cub->face_so);
-		free_array(cub->split_file);
-		cub->split_file = NULL;
-		(*j) = 1;
+	{
+		cub->face_so = read_path(cub->face_so, cub, j);
 	}
 	else if (ft_strcmp(cub->split_file[0], "EA") == 0 && !cub->face_ea)
-	{	
-		cub->face_ea= ft_strdup(cub->split_file[1]);
-		cub->face_ea = ft_super_strtrim(cub->face_ea);
-		free_array(cub->split_file);
-		cub->split_file = NULL;
-		(*j) = 1;
+	{
+		cub->face_ea = read_path(cub->face_ea, cub, j);
 	}
 	else if (ft_strcmp(cub->split_file[0], "WE") == 0 && !cub->face_we)
-	{	
-		cub->face_we = ft_strdup(cub->split_file[1]);
-		cub->face_we = ft_super_strtrim(cub->face_we);
-		free_array(cub->split_file);
-		cub->split_file = NULL;
-		(*j) = 1;
+	{
+		cub->face_we = read_path(cub->face_we, cub, j);
 	}
 	else if (ft_strcmp(cub->split_file[0], "C") == 0 && !cub->colors_celling)
-	{	
-		cub->colors_celling = ft_strdup(cub->split_file[1]);
-		cub->colors_celling = ft_super_strtrim(cub->colors_celling);
-		free_array(cub->split_file);
-		cub->split_file = NULL;
-		(*j) = 1;
+	{
+		cub->colors_celling = read_path(cub->colors_celling, cub, j);
 	}
 	else if (ft_strcmp(cub->split_file[0], "F") == 0 && !cub->colors_floor)
-	{	
-		cub->colors_floor = ft_strdup(cub->split_file[1]);
-		cub->colors_floor = ft_super_strtrim(cub->colors_floor);
-		free_array(cub->split_file);
-		cub->split_file = NULL;
-		(*j) = 1;
+	{
+		cub->colors_floor = read_path(cub->colors_floor, cub, j);
 	}
 }
 
-int	read_textures_colors(t_cub *cub)
+int	read_textures_colors(t_cub *cub, int i, int k, int j)
 {
-	int		i;
-	int		j;
-	int		k;
 	char	*tmp;
 
-	i = 0;
-	k = 0;
 	while (cub->file[i])
 	{
 		j = 0;
@@ -167,6 +116,5 @@ int	read_textures_colors(t_cub *cub)
 			free_array(cub->split_file);
 		i++;
 	}
-	cub->map[k] = NULL;
-	return (0);
+	return (cub->map[k] = NULL, 0);
 }

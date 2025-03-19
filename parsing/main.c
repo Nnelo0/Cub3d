@@ -6,7 +6,7 @@
 /*   By: ebroudic <ebroudic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/03 09:01:29 by ebroudic          #+#    #+#             */
-/*   Updated: 2025/03/19 13:27:33 by ebroudic         ###   ########.fr       */
+/*   Updated: 2025/03/19 15:13:49 by ebroudic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ void	free_array(char **arg)
 	free(arg);
 }
 
-int init_cub(t_cub *cub, char **argv)
+int	init_cub(t_cub *cub, char **argv)
 {
 	cub->face_no = NULL;
 	cub->face_so = NULL;
@@ -80,7 +80,7 @@ int init_cub(t_cub *cub, char **argv)
 	cub->colors_f = 0;
 	cub->split_file = NULL;
 	cub->player = NULL;
-	cub->line_in_file = count_lines(argv[1]);
+	cub->line_in_file = count_lines(argv[1], 1);
 	if (cub->line_in_file == -1)
 		return (-1);
 	cub->map = malloc(sizeof(char *) * (cub->line_in_file + 1));
@@ -121,12 +121,12 @@ void	free_all(t_cub *cub)
 	if (cub->player)
 		free(cub->player);
 	if (cub->img_no)
-        mlx_destroy_image(cub->mlx_ptr, cub->img_no);
-    if (cub->img_so)
-        mlx_destroy_image(cub->mlx_ptr, cub->img_so);
-    if (cub->img_we)
-        mlx_destroy_image(cub->mlx_ptr, cub->img_we);
-    if (cub->img_ea)
+		mlx_destroy_image(cub->mlx_ptr, cub->img_no);
+	if (cub->img_so)
+		mlx_destroy_image(cub->mlx_ptr, cub->img_so);
+	if (cub->img_we)
+		mlx_destroy_image(cub->mlx_ptr, cub->img_we);
+	if (cub->img_ea)
 		mlx_destroy_image(cub->mlx_ptr, cub->img_ea);
 	mlx_destroy_display(cub->mlx_ptr);
 	free(cub->mlx_ptr);
@@ -145,7 +145,7 @@ int	main(int argc, char **argv)
 			return (2);
 		if (init_cub(&cub, argv) == -1)
 			return (2);
-		read_textures_colors(&cub);
+		read_textures_colors(&cub, 0, 0, 0);
 		display_parsing(&cub);
 		if (verif(&cub) == -1)
 			return (free_all(&cub), 2);
@@ -158,6 +158,6 @@ int	main(int argc, char **argv)
 		return (0);
 	}
 	else
-		return (printf(RED "Error\nusage: %s./cub3D filename\n" RESET, GREEN), 2);
+		return (printf(RED"Error\nusage: %s./cub3D filename\n"RESET, GREEN), 2);
 	return (0);
 }

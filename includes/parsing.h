@@ -6,7 +6,7 @@
 /*   By: ebroudic <ebroudic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/13 09:12:28 by ebroudic          #+#    #+#             */
-/*   Updated: 2025/03/19 13:18:41 by ebroudic         ###   ########.fr       */
+/*   Updated: 2025/03/19 14:50:50 by ebroudic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,11 +50,48 @@ typedef struct s_cub
 	int		colors_f;
 }				t_cub;
 
+/*-------------read-file---------------*/
+
 int		read_file(char *filename, t_cub *cub);
-int		read_textures_colors(t_cub *cub);
+int		read_textures_colors(t_cub *cub, int i, int k, int j);
+
+/*---------------free------------------*/
+
 void	free_array(char **arg);
+
+/*---------------utils-----------------*/
+
 char	**ft_split_tab_space(char const *s);
-int		count_lines(char *filename);
+int		count_lines(char *filename, int bit);
+int		caract(char c);
+void	print_error(char *colors, char *extra, char *msg, char *extra2);
+
+/*---------------verif-----------------*/
+
 int		verif(t_cub *cub);
+int		verif_map(t_cub *cub);
+
+/*------------verif-map----------------*/
+
+int		verif_caracter(t_cub *cub);
+int		verif_wall(t_cub *cub);
+int		verif_one_player(t_cub *cub);
+int		valid_positions(t_cub *cub, int y, int x);
+int		verif_is_playable(t_cub *cub);
+
+/*-----------verif-textures------------*/
+
+int		verif_no(t_cub *cub);
+int		verif_so(t_cub *cub);
+int		verif_ea(t_cub *cub);
+int		verif_we(t_cub *cub);
+
+/*------------verif-colors-------------*/
+
+int		ft_isdigit_s(char *s, char *extra, char *index);
+int		verif_result(int i, char *extra, char *index);
+int		init_colors(t_cub *cub, char *colors, char *index, int type);
+int		verif_c(t_cub *cub);
+int		verif_f(t_cub *cub);
 
 #endif
