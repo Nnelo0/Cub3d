@@ -6,7 +6,7 @@
 /*   By: ebroudic <ebroudic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/19 14:49:07 by ebroudic          #+#    #+#             */
-/*   Updated: 2025/03/19 14:59:33 by ebroudic         ###   ########.fr       */
+/*   Updated: 2025/03/19 15:21:19 by ebroudic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,14 +59,8 @@ int	init_colors(t_cub *cub, char *colors, char *index, int type)
 	if (!tmp || !tmp[0] || !tmp[1] || !tmp[2])
 		return (free_array(tmp), print_error(GREEN, "",
 				"We need <R> <G> <B> for ", index), -1);
-	if (ft_isdigit_s(tmp[0], "<R>", index) == -1)
-		type = -1;
-	if (ft_isdigit_s(tmp[1], "<G>", index) == -1)
-		type = -1;
-	if (ft_isdigit_s(tmp[2], "<B>", index) == -1)
-		type = -1;
-	if (type == -1)
-		return (free_array(tmp), type);
+	if (is_digit(tmp, index) == -1)
+		return (free_array(tmp), type = -1);
 	r = ft_atoi(tmp[0]);
 	if (verif_result(r, "<R>", index) == -1)
 		type = -1;
@@ -80,8 +74,7 @@ int	init_colors(t_cub *cub, char *colors, char *index, int type)
 		cub->colors_c = ((r << 16) | (g << 8) | b);
 	else
 		cub->colors_f = ((r << 16) | (g << 8) | b);
-	free_array(tmp);
-	return (type);
+	return (free_array(tmp), type);
 }
 
 int	verif_c(t_cub *cub)

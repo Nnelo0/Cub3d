@@ -6,7 +6,7 @@
 /*   By: ebroudic <ebroudic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/13 09:12:28 by ebroudic          #+#    #+#             */
-/*   Updated: 2025/03/19 14:50:50 by ebroudic         ###   ########.fr       */
+/*   Updated: 2025/03/19 15:20:41 by ebroudic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,5 +93,6 @@ int		verif_result(int i, char *extra, char *index);
 int		init_colors(t_cub *cub, char *colors, char *index, int type);
 int		verif_c(t_cub *cub);
 int		verif_f(t_cub *cub);
+int		is_digit(char **tmp, char *index);
 
 #endif
