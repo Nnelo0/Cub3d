@@ -6,7 +6,7 @@
 /*   By: lelanglo <lelanglo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/13 09:01:29 by lelanglo          #+#    #+#             */
-/*   Updated: 2025/03/19 10:42:20 by lelanglo         ###   ########.fr       */
+/*   Updated: 2025/03/19 12:53:00 by lelanglo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,25 +38,6 @@ int	handle_close(t_data *data)
 		free(data->map[i++]);
 	free(data->map);
 	exit(0);
-	return (0);
-}
-
-int	handle_key(int keycode, t_data *data)
-{
-	if (keycode == 65307)
-		handle_close(data);
-	else if (keycode == 65363)
-		turn(data, 1);
-	else if (keycode == 65361)
-		turn(data, -1);
-	else if (keycode == 'w')
-		move(data, 1);
-	else if (keycode == 's')
-		move(data, -1);
-	else if (keycode == 'a')
-		left_right(data, -1);
-	else if (keycode == 'd')
-		left_right(data, 1);
 	return (0);
 }
 
@@ -116,9 +97,11 @@ int	main(void)
 	data.player.dir_y = -1;
 	data.player.plane_x = 0.66;
 	data.player.plane_y = 0;
+	init_keys(&data);
+	mlx_hook(data.win, 2, 1L << 0, key_press, &data);
+	mlx_hook(data.win, 3, 1L << 1, key_release, &data);
+	mlx_loop_hook(data.mlx, update, &data);
 	mlx_hook(data.win, 17, 0, handle_close, &data);
-	mlx_key_hook(data.win, handle_key, &data);
-	mlx_loop_hook(data.mlx, render, &data);
 	mlx_loop(data.mlx);
 	return (0);
 }

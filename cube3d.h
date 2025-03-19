@@ -6,7 +6,7 @@
 /*   By: lelanglo <lelanglo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/13 09:03:21 by lelanglo          #+#    #+#             */
-/*   Updated: 2025/03/19 08:56:18 by lelanglo         ###   ########.fr       */
+/*   Updated: 2025/03/19 12:58:20 by lelanglo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,8 @@
 
 # define WIDTH 1800
 # define HEIGHT 900
-# define ROTATE 0.0872665
-# define SPEED	0.5
+# define ROTATE 0.01574533
+# define SPEED	0.03
 
 typedef struct s_player
 {
@@ -42,6 +42,7 @@ typedef struct s_data
 	void		*win;
 	void		*img;
 	char		**map;
+	int			keys[65365];
 	int			*img_data;
 	int			bpp;
 	int			size_line;
@@ -50,8 +51,12 @@ typedef struct s_data
 }	t_data;
 
 int		handle_close(t_data *data);
-int		handle_key(int keycode, t_data *data);
+int		render(t_data *data);
+int		update(t_data *data);
 int		read_map(t_data *data);
+int		key_release(int keycode, t_data *data);
+int		key_press(int keycode, t_data *data);
+void	init_keys(t_data *data);
 void	cast_rays(t_data *data);
 void	turn(t_data *data, int sens);
 void	destroy_image(t_data *data);
