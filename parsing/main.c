@@ -6,7 +6,7 @@
 /*   By: ebroudic <ebroudic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/03 09:01:29 by ebroudic          #+#    #+#             */
-/*   Updated: 2025/03/19 13:11:53 by ebroudic         ###   ########.fr       */
+/*   Updated: 2025/03/19 13:27:33 by ebroudic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,6 +79,7 @@ int init_cub(t_cub *cub, char **argv)
 	cub->colors_c = 0;
 	cub->colors_f = 0;
 	cub->split_file = NULL;
+	cub->player = NULL;
 	cub->line_in_file = count_lines(argv[1]);
 	if (cub->line_in_file == -1)
 		return (-1);
@@ -117,6 +118,8 @@ void	free_all(t_cub *cub)
 	free(cub->face_ea);
 	free(cub->colors_floor);
 	free(cub->colors_celling);
+	if (cub->player)
+		free(cub->player);
 	if (cub->img_no)
         mlx_destroy_image(cub->mlx_ptr, cub->img_no);
     if (cub->img_so)
@@ -148,6 +151,9 @@ int	main(int argc, char **argv)
 			return (free_all(&cub), 2);
 		printf("c in hex: %x\n", cub.colors_c);
 		printf("FLOOR in hex: %x\n", cub.colors_f);
+		printf("player_x: %d\n", cub.player_x);
+		printf("player_y: %d\n", cub.player_y);
+		printf("player: %s\n", cub.player);
 		free_all(&cub);
 		return (0);
 	}

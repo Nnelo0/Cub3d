@@ -6,7 +6,7 @@
 /*   By: ebroudic <ebroudic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/13 09:12:28 by ebroudic          #+#    #+#             */
-/*   Updated: 2025/03/19 09:45:23 by ebroudic         ###   ########.fr       */
+/*   Updated: 2025/03/19 13:18:41 by ebroudic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,7 @@ typedef struct s_cub
 	char	**map;
 	int		player_x;
 	int		player_y;
+	char	*player;
 	int		line_in_file;
 	int		colors_c;
 	int		colors_f;

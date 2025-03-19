@@ -6,7 +6,7 @@
 /*   By: ebroudic <ebroudic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/17 13:17:09 by ebroudic          #+#    #+#             */
-/*   Updated: 2025/03/19 13:12:25 by ebroudic         ###   ########.fr       */
+/*   Updated: 2025/03/19 13:23:49 by ebroudic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -312,9 +312,19 @@ int	verif_one_player(t_cub *cub)
 					printf("\033[1;31mError\n\033[1;35m{%c} in \033[1;34m<y>: %d \033[1;35mand \033[1;34m<x>: %d \033[1;35mone player is allowed in map file \033[1;33m<usage>: [N] or [S] or [W] or [E] for according the player to the orientation\n", cub->map[i][j], i + 1, j + 1);
 					type = -1;
 				}
+				if (!player)
+					cub->player_x = j;
+				if (!player)
+					cub->player_y = i;
+				if (!player && cub->map[i][j] == 'W')
+					cub->player = ft_strdup("W");
+				if (!player && cub->map[i][j] == 'E')
+					cub->player = ft_strdup("E");
+				if (!player && cub->map[i][j] == 'S')
+					cub->player = ft_strdup("S");
+				if (!player && cub->map[i][j] == 'N')
+					cub->player = ft_strdup("N");
 				player = 1;
-				cub->player_x = j;
-				cub->player_y = i;
 			}
 			j++;
 		}
