@@ -6,7 +6,7 @@
 /*   By: lelanglo <lelanglo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/18 10:40:03 by lelanglo          #+#    #+#             */
-/*   Updated: 2025/03/18 13:22:42 by lelanglo         ###   ########.fr       */
+/*   Updated: 2025/03/19 13:32:48 by lelanglo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,6 @@ void	cast_rays(t_data *data)
 	int		line_height;
 	int		draw_start;
 	int		draw_end;
-	int		color;
 	int		y;
 
 	x = 0;
@@ -100,13 +99,15 @@ void	cast_rays(t_data *data)
 		draw_end = line_height / 2 + HEIGHT / 2;
 		if (draw_end >= HEIGHT)
 			draw_end = HEIGHT - 1;
-		color = 0x006234;
+		y = 0;
+		while (y < draw_start)
+			put_pixel(data, x, y++, 0x87CEEB);
 		y = draw_start;
 		while (y < draw_end)
-		{
-			put_pixel(data, x, y, color);
-			y++;
-		}
+			put_pixel(data, x, y++, 0x808080);
+		y = draw_end;
+		while (y < HEIGHT)
+    		put_pixel(data, x, y++, 0x554433);
 		x++;
 	}
 }
