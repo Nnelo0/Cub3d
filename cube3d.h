@@ -6,7 +6,7 @@
 /*   By: lelanglo <lelanglo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/13 09:03:21 by lelanglo          #+#    #+#             */
-/*   Updated: 2025/03/19 13:36:52 by lelanglo         ###   ########.fr       */
+/*   Updated: 2025/03/20 10:38:00 by lelanglo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,27 @@ typedef struct s_data
 	t_player	player;
 }	t_data;
 
+typedef struct s_ray
+{
+	double	camera_x;
+	double	dir_x;
+	double	dir_y;
+	int		map_x;
+	int		map_y;
+	double	side_dist_x;
+	double	side_dist_y;
+	double	delta_dist_x;
+	double	delta_dist_y;
+	double	perp_wall_dist;
+	int		step_x;
+	int		step_y;
+	int		hit;
+	int		side;
+	int		line_height;
+	int		draw_start;
+	int		draw_end;
+}	t_ray;
+
 int		handle_close(t_data *data);
 int		render(t_data *data);
 int		update(t_data *data);
@@ -62,4 +83,7 @@ void	turn(t_data *data, int sens);
 void	destroy_image(t_data *data);
 void	move(t_data *data, int sens);
 void	left_right(t_data *data, int sens);
+void	put_pixel(t_data *data, int x, int y, int color);
+void	init_ray(t_data *data, int x, t_ray *ray);
+void	init_step(t_data *data, t_ray *ray);
 #endif
