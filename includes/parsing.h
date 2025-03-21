@@ -6,7 +6,7 @@
 /*   By: nnelo <nnelo@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/13 09:12:28 by ebroudic          #+#    #+#             */
-/*   Updated: 2025/03/19 18:26:48 by nnelo            ###   ########.fr       */
+/*   Updated: 2025/03/21 18:55:32 by nnelo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,9 @@ typedef struct s_cub
 
 int		read_file(char *filename, t_cub *cub);
 int		read_textures_colors(t_cub *cub, int i, int k, int j);
-
+char	*ft_super_strtrim(char *str);
+char	*read_path(char *str, t_cub *cub, int *j);
+int		print_duplicate(char *index);
 /*---------------free------------------*/
 
 void	free_array(char **arg);
@@ -73,9 +75,9 @@ int		verif_map(t_cub *cub);
 
 /*------------verif-map----------------*/
 
-int		verif_caracter(t_cub *cub);
-int		verif_wall(t_cub *cub);
-int		verif_one_player(t_cub *cub);
+int		verif_caracter(t_cub *cub, int i, int j);
+int		verif_wall(t_cub *cub, int i, int j);
+int		verif_one_player(t_cub *cub, int i, int j, int player);
 int		valid_positions(t_cub *cub, int y, int x);
 int		verif_is_playable(t_cub *cub);
 

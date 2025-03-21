@@ -7,16 +7,18 @@ CFLAGS = -Wall -Werror -Wextra -g
 
 MLXFLAGS = -I./minilibx-linux -L./minilibx-linux -lmlx -lXext -lX11 -lm
 
-SRCDIR = parsing
+PARSDIR = parsing
 OBJDIR = obj
 LIBFTDIR = libft
 MINILIBXDIR = minilibx-linux
 
-SRCS = $(SRCDIR)/main.c $(SRCDIR)/read_files.c $(SRCDIR)/split_tab_space.c \
-$(SRCDIR)/verif.c $(SRCDIR)/verif_map.c $(SRCDIR)/verif_textures.c \
-$(SRCDIR)/verif_colors.c $(SRCDIR)/parsing_utils.c $(SRCDIR)/verif_colors_utils.c \
+SRCS = $(PARSDIR)/main.c $(PARSDIR)/read_files.c $(PARSDIR)/split_tab_space.c \
+$(PARSDIR)/verif.c $(PARSDIR)/verif_wall.c $(PARSDIR)/verif_textures.c \
+$(PARSDIR)/verif_colors.c $(PARSDIR)/parsing_utils.c $(PARSDIR)/verif_colors_utils.c \
+$(PARSDIR)/read_files_utils.c $(PARSDIR)/verif_player.c $(PARSDIR)/verif_positions.c \
 
-OBJS = $(SRCS:$(SRCDIR)/%.c=$(OBJDIR)/%.o)
+
+OBJS = $(SRCS:$(PARSDIR)/%.c=$(OBJDIR)/%.o)
 
 LIBFT = $(LIBFTDIR)/libft.a
 
@@ -28,7 +30,7 @@ $(NAME): $(OBJS) $(LIBFT) $(MINILIBX)
 	$(CC) $(CFLAGS) -o $(NAME) $(OBJS) $(MLXFLAGS) $(LIBFT)
 	@echo "\033[32m✔ Compilation completed\033[0m"
 
-$(OBJDIR)/%.o: $(SRCDIR)/%.c | $(OBJDIR)
+$(OBJDIR)/%.o: $(PARSDIR)/%.c | $(OBJDIR)
 	$(CC) $(CFLAGS) -c $< -o $@
 
 $(OBJDIR):

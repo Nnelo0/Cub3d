@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   verif.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ebroudic <ebroudic@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nnelo <nnelo@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/17 13:17:09 by ebroudic          #+#    #+#             */
-/*   Updated: 2025/03/19 14:51:46 by ebroudic         ###   ########.fr       */
+/*   Updated: 2025/03/21 18:55:38 by nnelo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,12 +51,12 @@ int	verif_map(t_cub *cub)
 0 for empty spaces, [N][S][E][W] for player", "");
 		return (type = -1);
 	}
-	if (verif_caracter(cub) == -1)
-		type = -1;
-	if (verif_wall(cub) == -1)
-		type = -1;
-	if (verif_one_player(cub) == -1)
-		type = -1;
+	if (verif_caracter(cub, 0, 0) == -1)
+		return (type = -1);
+	if (verif_wall(cub, 0, 0) == -1)
+		return (type = -1);
+	if (verif_one_player(cub, 0, 0, 0) == -1)
+		return (type = -1);
 	if (verif_is_playable(cub) == -1)
 		type = -1;
 	return (type);
