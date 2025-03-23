@@ -6,7 +6,7 @@
 /*   By: lelanglo <lelanglo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/23 15:26:19 by lelanglo          #+#    #+#             */
-/*   Updated: 2025/03/23 15:46:08 by lelanglo         ###   ########.fr       */
+/*   Updated: 2025/03/23 16:36:31 by lelanglo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,4 +20,22 @@ t_img	load_texture(void *mlx, char *path)
 	img.data = (int *)mlx_get_data_addr(img.img_ptr, &img.bpp, &img.size_line,
 			&img.endian);
 	return (img);
+}
+
+int	what_texture(t_ray *ray)
+{
+	if (ray->side == 0)
+	{
+		if (ray->step_x > 0)
+			return (2);
+		else
+			return (3);
+	}
+	else
+	{
+		if (ray->step_y > 0)
+			return (1);
+		else
+			return (0);
+	}
 }

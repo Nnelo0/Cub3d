@@ -6,29 +6,11 @@
 /*   By: lelanglo <lelanglo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/18 10:40:03 by lelanglo          #+#    #+#             */
-/*   Updated: 2025/03/23 16:30:49 by lelanglo         ###   ########.fr       */
+/*   Updated: 2025/03/23 16:36:20 by lelanglo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cube3d.h"
-
-static int	what_texture(t_ray *ray)
-{
-	if (ray->side == 0)
-	{
-		if (ray->step_x > 0)
-			return (2);
-		else
-			return (3);
-	}
-	else
-	{
-		if (ray->step_y > 0)
-			return (1);
-		else
-			return (0);
-	}
-}
 
 static void	perform_dda(t_data *data, t_ray *ray)
 {

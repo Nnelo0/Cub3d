@@ -6,7 +6,7 @@
 /*   By: lelanglo <lelanglo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/13 09:03:21 by lelanglo          #+#    #+#             */
-/*   Updated: 2025/03/23 16:22:58 by lelanglo         ###   ########.fr       */
+/*   Updated: 2025/03/23 16:36:47 by lelanglo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,4 +107,5 @@ void	put_pixel(t_data *data, int x, int y, int color);
 void	init_ray(t_data *data, int x, t_ray *ray);
 void	init_step(t_data *data, t_ray *ray);
 t_img	load_texture(void *mlx, char *path);
+int		what_texture(t_ray *ray);
 #endif
