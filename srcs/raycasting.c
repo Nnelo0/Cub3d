@@ -6,7 +6,7 @@
 /*   By: lelanglo <lelanglo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/18 10:40:03 by lelanglo          #+#    #+#             */
-/*   Updated: 2025/03/23 16:36:20 by lelanglo         ###   ########.fr       */
+/*   Updated: 2025/03/24 09:14:10 by lelanglo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,16 +67,16 @@ static void	draw_column(t_data *data, int x, t_ray *ray)
 	y = 0;
 	while (y < ray->draw_start)
 		put_pixel(data, x, y++, 0x87CEEB);
-	ray->step = 1.0 * T_HEIGHT / ray->line_height;
+	ray->step = 1.0 * data->textures[what_texture(ray)].height / ray->line_height;
 	ray->tex_pos = (ray->draw_start - HEIGHT / 2 + ray->line_height / 2)
 		* ray->step;
 	y = ray->draw_start;
 	while (y < ray->draw_end)
 	{
-		ray->tex_y = (int)ray->tex_pos & (T_HEIGHT - 1);
+		ray->tex_y = (int)ray->tex_pos % (data->textures[what_texture(ray)].height - 1);
 		ray->tex_pos += ray->step;
 		ray->color = data->textures[what_texture(ray)].data[ray->tex_y
-			* T_WIDTH + ray->tex_x];
+			* data->textures[what_texture(ray)].width + ray->tex_x];
 		put_pixel(data, x, y++, ray->color);
 	}
 	y = ray->draw_end;
