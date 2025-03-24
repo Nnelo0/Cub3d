@@ -6,7 +6,7 @@
 /*   By: lelanglo <lelanglo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/13 09:01:29 by lelanglo          #+#    #+#             */
-/*   Updated: 2025/03/24 10:07:07 by lelanglo         ###   ########.fr       */
+/*   Updated: 2025/03/24 10:25:17 by lelanglo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,10 +97,10 @@ int	main(void)
 	data.player.dir_y = -1;
 	data.player.plane_x = 0.66;
 	data.player.plane_y = 0;
-	data.textures[0] = load_texture(data.mlx, "un.xpm");
-	data.textures[1] = load_texture(data.mlx, "deux.xpm");
-	data.textures[2] = load_texture(data.mlx, "ichigo.xpm");
-	data.textures[3] = load_texture(data.mlx, "scale.xpm");
+	data.textures[0] = load_texture(data.mlx, "fan.xpm");
+	data.textures[1] = load_texture(data.mlx, "flash.xpm");
+	data.textures[2] = load_texture(data.mlx, "martin.xpm");
+	data.textures[3] = load_texture(data.mlx, "sally.xpm");
 	init_keys(&data);
 	mlx_hook(data.win, 2, 1L << 0, key_press, &data);
 	mlx_hook(data.win, 3, 1L << 1, key_release, &data);
