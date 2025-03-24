@@ -6,7 +6,7 @@
 /*   By: lelanglo <lelanglo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/13 09:01:29 by lelanglo          #+#    #+#             */
-/*   Updated: 2025/03/24 10:25:17 by lelanglo         ###   ########.fr       */
+/*   Updated: 2025/03/24 12:40:24 by lelanglo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,9 +31,12 @@ int	handle_close(t_data *data)
 
 	i = 0;
 	mlx_destroy_image(data->mlx, data->img);
+	while (i < 4)
+		mlx_destroy_image(data->mlx, data->textures[i++].img_ptr);
 	mlx_destroy_window(data->mlx, data->win);
 	mlx_destroy_display(data->mlx);
 	free(data->mlx);
+	i = 0;
 	while (data->map[i])
 		free(data->map[i++]);
 	free(data->map);
