@@ -6,7 +6,7 @@
 /*   By: lelanglo <lelanglo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/13 09:03:21 by lelanglo          #+#    #+#             */
-/*   Updated: 2025/03/24 09:00:34 by lelanglo         ###   ########.fr       */
+/*   Updated: 2025/03/24 10:05:37 by lelanglo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,6 @@
 # define HEIGHT 900
 # define ROTATE 0.01574533
 # define SPEED	0.03
-# define T_HEIGHT 72
-# define T_WIDTH 72
 
 typedef struct s_player
 {

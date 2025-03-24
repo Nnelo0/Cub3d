@@ -6,7 +6,7 @@
 /*   By: lelanglo <lelanglo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/18 10:40:03 by lelanglo          #+#    #+#             */
-/*   Updated: 2025/03/24 09:14:10 by lelanglo         ###   ########.fr       */
+/*   Updated: 2025/03/24 10:12:48 by lelanglo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,10 +46,10 @@ static void	norm_draw(t_data *data, t_ray *ray)
 	else
 		ray->wall_x = data->player.x + ray->perp_wall_dist * ray->dir_x;
 	ray->wall_x -= floor(ray->wall_x);
-	ray->tex_x = (int)(ray->wall_x * (double)T_WIDTH);
-	if ((ray->side == 0 && ray->dir_x > 0)
-		|| (ray->side == 1 && ray->dir_y < 0))
-		ray->tex_x = T_WIDTH - ray->tex_x - 1;
+	ray->tex_x = (int)(ray->wall_x * (double)data->textures[what_texture(ray)].width);
+	if ((ray->side == 0 && ray->dir_x < 0)
+    	|| (ray->side == 1 && ray->dir_y > 0))
+		ray->tex_x = data->textures[what_texture(ray)].width - ray->tex_x - 1;
 	ray->line_height = (int)(HEIGHT / ray->perp_wall_dist);
 	ray->draw_start = -ray->line_height / 2 + HEIGHT / 2;
 	if (ray->draw_start < 0)
@@ -67,7 +67,7 @@ static void	draw_column(t_data *data, int x, t_ray *ray)
 	y = 0;
 	while (y < ray->draw_start)
 		put_pixel(data, x, y++, 0x87CEEB);
-	ray->step = 1.0 * data->textures[what_texture(ray)].height / ray->line_height;
+	ray->step = 0.95 * data->textures[what_texture(ray)].height / ray->line_height;
 	ray->tex_pos = (ray->draw_start - HEIGHT / 2 + ray->line_height / 2)
 		* ray->step;
 	y = ray->draw_start;
