@@ -6,7 +6,7 @@
 /*   By: lelanglo <lelanglo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/13 09:03:21 by lelanglo          #+#    #+#             */
-/*   Updated: 2025/03/27 14:12:06 by lelanglo         ###   ########.fr       */
+/*   Updated: 2025/03/27 14:20:46 by lelanglo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,7 +97,7 @@ typedef struct s_ray
 
 int		handle_close(t_data *data);
 int		render(t_data *data);
-int		update(t_data *data, t_cub *cub);
+int		update(t_data *data);
 int		key_release(int keycode, t_data *data);
 int		key_press(int keycode, t_data *data);
 void	init_keys(t_data *data);

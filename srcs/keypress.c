@@ -6,7 +6,7 @@
 /*   By: lelanglo <lelanglo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/19 12:50:19 by lelanglo          #+#    #+#             */
-/*   Updated: 2025/03/27 14:08:05 by lelanglo         ###   ########.fr       */
+/*   Updated: 2025/03/27 14:20:34 by lelanglo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ int	key_release(int keycode, t_data *data)
 	return (0);
 }
 
-int	update(t_data *data, t_cub *cub)
+int	update(t_data *data)
 {
 	if (data->keys[65307])
 		handle_close(data);
@@ -51,6 +51,6 @@ int	update(t_data *data, t_cub *cub)
 		left_right(data, -1);
 	if (data->keys['d'])
 		left_right(data, 1);
-	render(data, cub);
+	render(data);
 	return (0);
 }
