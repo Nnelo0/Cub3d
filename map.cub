@@ -2,6 +2,7 @@ NO ./textures/purple_turtle.xpm
 SO ./textures/fan.xpm	
 WE ./textures/sally.xpm
 EA ./textures/flash.xpm
+
 F 100,100,100 
 C 173,216,230
 

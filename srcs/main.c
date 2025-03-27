@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ebroudic <ebroudic@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nnelo <nnelo@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/13 09:01:29 by lelanglo          #+#    #+#             */
-/*   Updated: 2025/03/27 15:51:55 by ebroudic         ###   ########.fr       */
+/*   Updated: 2025/03/27 20:03:13 by nnelo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,6 +76,22 @@ static void	init_tex(t_data *data, t_cub *cub)
 	data->textures[3] = load_texture(data->mlx, cub->face_we);
 }
 
+void	free_textures(t_cub *cub)
+{
+	if (cub->face_ea)
+		free(cub->face_ea);
+	if (cub->face_no)
+		free(cub->face_no);
+	if (cub->face_we)
+		free(cub->face_we);
+	if (cub->face_so)
+		free(cub->face_so);
+	if (cub->colors_celling)
+		free(cub->colors_celling);
+	if (cub->colors_floor)
+		free(cub->colors_floor);
+}
+
 int	main(int argc, char **argv)
 {
 	t_data	data;
@@ -89,12 +105,15 @@ int	main(int argc, char **argv)
 		return (printf(RED "Error\n%smlx_init failed\n"RESET, GREEN), 2);
 	if (verif_cub(argv))
 		return (printf(RED "Error\nfilename must be finish with %s.cub\n"RESET
-				, GREEN), 2);
+				, GREEN), mlx_destroy_display(data.mlx), free(data.mlx), 2);
 	if (read_file(argv[1], &cub) == -1)
-		return (2);
+		return (mlx_destroy_display(data.mlx), free(data.mlx), 2);
 	if (init_cub(&cub, argv) == -1)
-		return (2);
-	read_textures_colors(&cub, 0, 0, 0);
+		return (mlx_destroy_display(data.mlx), free(data.mlx),
+			free_array(cub.file), 2);
+	if (read_textures_colors(&cub, 0, 0, 0) == -1)
+		return (mlx_destroy_display(data.mlx), free(data.mlx),
+		free_array(cub.file), free(cub.map), free_textures(&cub), 2);
 	if (verif(&cub, &data) == -1)
 		return (free_all(&cub), 2);
 	init_destroy(&data, &cub);
