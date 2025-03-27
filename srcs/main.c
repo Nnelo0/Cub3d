@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lelanglo <lelanglo@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ebroudic <ebroudic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/13 09:01:29 by lelanglo          #+#    #+#             */
-/*   Updated: 2025/03/27 14:09:46 by lelanglo         ###   ########.fr       */
+/*   Updated: 2025/03/27 15:51:55 by ebroudic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,8 +85,10 @@ int	main(int argc, char **argv)
 		return (printf(RED "Error\nusage: %s./cub3D filename\n"RESET, GREEN)
 			, 2);
 	data.mlx = mlx_init();
+	if (!data.mlx)
+		return (printf(RED "Error\n%smlx_init failed\n"RESET, GREEN), 2);
 	if (verif_cub(argv))
-		return (printf(RED "Error\nfilename must be finish with %s.cub\n" RESET
+		return (printf(RED "Error\nfilename must be finish with %s.cub\n"RESET
 				, GREEN), 2);
 	if (read_file(argv[1], &cub) == -1)
 		return (2);
@@ -99,8 +101,6 @@ int	main(int argc, char **argv)
 	(orientation_player(&cub, &data), init_tex(&data, &cub), init_keys(&data));
 	mlx_hook(data.win, 2, 1L << 0, key_press, &data);
 	mlx_hook(data.win, 3, 1L << 1, key_release, &data);
-	mlx_loop_hook(data.mlx, update, &data);
-	mlx_hook(data.win, 17, 0, handle_close, &data);
-	mlx_loop(data.mlx);
-	return (0);
+	return (mlx_loop_hook(data.mlx, update, &data), (mlx_hook(data.win, 17,
+				0, handle_close, &data), mlx_loop(data.mlx)), 0);
 }
