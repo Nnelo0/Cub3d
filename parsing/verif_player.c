@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   verif_player.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nnelo <nnelo@student.42.fr>                +#+  +:+       +#+        */
+/*   By: ebroudic <ebroudic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/21 18:19:41 by nnelo             #+#    #+#             */
-/*   Updated: 2025/03/21 22:26:17 by nnelo            ###   ########.fr       */
+/*   Updated: 2025/03/27 13:04:39 by ebroudic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/parsing.h"
 
-int	verif_player(t_cub *cub, int i, int j, int *player)
+int	verif_player(t_cub *cub, int i, int j, int *player, t_data *data)
 {
 	if ((*player))
 	{
@@ -22,9 +22,8 @@ int	verif_player(t_cub *cub, int i, int j, int *player)
 orientation\n", cub->map[i][j], i + 1, j + 1);
 		return (-1);
 	}
-	cub->data->player.x = j + 0.5;
-	cub->data->player.y = i + 0.5;
-	//cub->map[i][j] = '0';
+	data->player.x = j + 0.5;
+	data->player.y = i + 0.5;
 	if (cub->map[i][j] == 'W')
 		cub->player = ft_strdup("W");
 	if (cub->map[i][j] == 'E')
@@ -33,11 +32,12 @@ orientation\n", cub->map[i][j], i + 1, j + 1);
 		cub->player = ft_strdup("S");
 	if (cub->map[i][j] == 'N')
 		cub->player = ft_strdup("N");
+	cub->map[i][j] = '0';
 	(*player) = 1;
 	return (0);
 }
 
-int	verif_one_player(t_cub *cub, int i, int j, int player)
+int	verif_one_player(t_cub *cub, int i, int j, int player, t_data *data)
 {
 	while (cub->map[i])
 	{
@@ -47,7 +47,7 @@ int	verif_one_player(t_cub *cub, int i, int j, int player)
 			if (cub->map[i][j] == 'W' || cub->map[i][j] == 'E'
 				|| cub->map[i][j] == 'S' || cub->map[i][j] == 'N')
 			{
-				if (verif_player(cub, i, j, &player) == -1)
+				if (verif_player(cub, i, j, &player, data) == -1)
 					return (-1);
 			}
 			j++;

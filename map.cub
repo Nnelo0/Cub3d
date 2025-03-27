@@ -1,12 +1,12 @@
-NO ./textures/pizza.xpm
-SO ./textures/road.xpm	
-WE ./textures/wall2.xpm
-EA ./textures/wall2.xpm
-F 100,170,255 
-C 150,150,150
+NO ./textures/purple_turtle.xpm
+SO ./textures/fan.xpm	
+WE ./textures/martin.xpm
+EA ./textures/flash.xpm
+F 100,100,100 
+C 173,216,230
 
 111111111
 1100001111
-1000W001011
+1000W01011
 10000001111
 11111111111

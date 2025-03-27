@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nnelo <nnelo@student.42.fr>                +#+  +:+       +#+        */
+/*   By: ebroudic <ebroudic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/21 21:51:48 by nnelo             #+#    #+#             */
-/*   Updated: 2025/03/21 22:21:15 by nnelo            ###   ########.fr       */
+/*   Updated: 2025/03/27 13:13:50 by ebroudic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,10 +56,6 @@ int	init_cub(t_cub *cub, char **argv)
 	cub->map = malloc(sizeof(char *) * (cub->line_in_file + 1));
 	if (!cub->map)
 		return (printf("Error\n Malloc failed"), -1);
-	cub->data = malloc(sizeof(t_data));
-	if (!cub->data)
-		return (printf("Error\n Malloc failed for cub->data"), -1);
-	cub->data->mlx = mlx_init();
 	return (0);
 }
 
@@ -73,16 +69,4 @@ void	free_all(t_cub *cub)
 	free(cub->face_ea);
 	free(cub->colors_floor);
 	free(cub->colors_celling);
-	if (cub->player)
-		free(cub->player);
-	if (cub->img_no)
-		mlx_destroy_image(cub->data->mlx, cub->img_no);
-	if (cub->img_so)
-		mlx_destroy_image(cub->data->mlx, cub->img_so);
-	if (cub->img_we)
-		mlx_destroy_image(cub->data->mlx, cub->img_we);
-	if (cub->img_ea)
-		mlx_destroy_image(cub->data->mlx, cub->img_ea);
-	mlx_destroy_display(cub->data->mlx);
-	free(cub->data->mlx);
 }

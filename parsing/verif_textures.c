@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   verif_textures.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nnelo <nnelo@student.42.fr>                +#+  +:+       +#+        */
+/*   By: ebroudic <ebroudic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/19 14:40:32 by ebroudic          #+#    #+#             */
-/*   Updated: 2025/03/21 22:00:07 by nnelo            ###   ########.fr       */
+/*   Updated: 2025/03/27 13:00:59 by ebroudic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/parsing.h"
 
-int	verif_no(t_cub *cub)
+int	verif_no(t_cub *cub, t_data *data)
 {
 	int	type;
 	int	width;
@@ -26,7 +26,7 @@ int	verif_no(t_cub *cub)
 _texture", "");
 		return (type = -1);
 	}
-	cub->img_no = mlx_xpm_file_to_image(cub->data->mlx, cub->face_no,
+	cub->img_no = mlx_xpm_file_to_image(data->mlx, cub->face_no,
 			&width, &height);
 	if (!cub->img_no)
 	{
@@ -36,7 +36,7 @@ _texture", "");
 	return (type);
 }
 
-int	verif_so(t_cub *cub)
+int	verif_so(t_cub *cub, t_data *data)
 {
 	int	type;
 	int	width;
@@ -50,7 +50,7 @@ int	verif_so(t_cub *cub)
 _texture", "");
 		return (type = -1);
 	}
-	cub->img_so = mlx_xpm_file_to_image(cub->data->mlx, cub->face_so,
+	cub->img_so = mlx_xpm_file_to_image(data->mlx, cub->face_so,
 			&width, &height);
 	if (!cub->img_so)
 	{
@@ -60,7 +60,7 @@ _texture", "");
 	return (type);
 }
 
-int	verif_we(t_cub *cub)
+int	verif_we(t_cub *cub, t_data *data)
 {
 	int	type;
 	int	width;
@@ -74,7 +74,7 @@ int	verif_we(t_cub *cub)
 _texture", "");
 		return (type = -1);
 	}
-	cub->img_we = mlx_xpm_file_to_image(cub->data->mlx, cub->face_we,
+	cub->img_we = mlx_xpm_file_to_image(data->mlx, cub->face_we,
 			&width, &height);
 	if (!cub->img_we)
 	{
@@ -84,7 +84,7 @@ _texture", "");
 	return (type);
 }
 
-int	verif_ea(t_cub *cub)
+int	verif_ea(t_cub *cub, t_data *data)
 {
 	int	type;
 	int	width;
@@ -98,7 +98,7 @@ int	verif_ea(t_cub *cub)
 _texture", "");
 		return (type = -1);
 	}
-	cub->img_ea = mlx_xpm_file_to_image(cub->data->mlx, cub->face_ea,
+	cub->img_ea = mlx_xpm_file_to_image(data->mlx, cub->face_ea,
 			&width, &height);
 	if (!cub->img_ea)
 	{
