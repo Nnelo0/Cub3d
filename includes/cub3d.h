@@ -6,7 +6,7 @@
 /*   By: lelanglo <lelanglo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/13 09:03:21 by lelanglo          #+#    #+#             */
-/*   Updated: 2025/03/27 14:22:52 by lelanglo         ###   ########.fr       */
+/*   Updated: 2025/03/27 14:45:47 by lelanglo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@
 # define WIDTH 1800
 # define HEIGHT 900
 # define ROTATE 0.03574533
-# define SPEED	0.07
+# define SPEED	0.071
 
 typedef struct s_cub	t_cub;
 
