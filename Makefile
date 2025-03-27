@@ -16,7 +16,7 @@ parsing/verif.c parsing/verif_wall.c parsing/verif_textures.c \
 parsing/verif_colors.c parsing/parsing_utils.c parsing/verif_colors_utils.c parsing/init.c\
 parsing/read_files_utils.c parsing/verif_player.c parsing/verif_positions.c \
 srcs/keypress.c srcs/raycasting_utils.c srcs/raycasting.c srcs/shifting.c \
-srcs/main.c srcs/textures.c
+srcs/main.c srcs/textures_and_co.c
 
 OBJS = $(SRCS:%.c=$(OBJDIR)/%.o)
 

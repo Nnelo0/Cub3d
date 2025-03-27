@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   keypress.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ebroudic <ebroudic@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lelanglo <lelanglo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/19 12:50:19 by lelanglo          #+#    #+#             */
-/*   Updated: 2025/03/27 13:33:14 by ebroudic         ###   ########.fr       */
+/*   Updated: 2025/03/27 14:08:05 by lelanglo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ int	key_release(int keycode, t_data *data)
 int	update(t_data *data, t_cub *cub)
 {
 	if (data->keys[65307])
-		handle_close(data, cub);
+		handle_close(data);
 	if (data->keys[65363])
 		turn(data, 1);
 	if (data->keys[65361])

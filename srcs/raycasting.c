@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   raycasting.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ebroudic <ebroudic@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lelanglo <lelanglo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/18 10:40:03 by lelanglo          #+#    #+#             */
-/*   Updated: 2025/03/27 13:37:59 by ebroudic         ###   ########.fr       */
+/*   Updated: 2025/03/27 14:10:26 by lelanglo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,9 +60,8 @@ static void	norm_draw(t_data *data, t_ray *ray)
 		ray->draw_end = HEIGHT - 1;
 }
 
-static void	draw_column(t_data *data, int x, t_ray *ray, t_cub *cub)
+static void	draw_column(t_data *data, int x, t_ray *ray)
 {
-	(void)cub;
 	int	y;
 
 	norm_draw(data, ray);
@@ -88,7 +87,7 @@ static void	draw_column(t_data *data, int x, t_ray *ray, t_cub *cub)
 		put_pixel(data, x, y++, data->f);
 }
 
-void	cast_rays(t_data *data, t_cub *cub)
+void	cast_rays(t_data *data)
 {
 	int		x;
 	t_ray	ray;
@@ -99,7 +98,7 @@ void	cast_rays(t_data *data, t_cub *cub)
 		init_ray(data, x, &ray);
 		init_step(data, &ray);
 		perform_dda(data, &ray);
-		draw_column(data, x, &ray, cub);
+		draw_column(data, x, &ray);
 		x++;
 	}
 }
