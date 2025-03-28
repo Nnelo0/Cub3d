@@ -6,7 +6,7 @@
 /*   By: nnelo <nnelo@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/19 14:36:58 by ebroudic          #+#    #+#             */
-/*   Updated: 2025/03/21 18:55:11 by nnelo            ###   ########.fr       */
+/*   Updated: 2025/03/28 23:07:34 by nnelo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,7 +87,7 @@ int	verif_wall(t_cub *cub, int i, int j)
 	while (cub->map[i])
 	{
 		j = 0;
-		while (cub->map[i][j + 1])
+		while (cub->map[i][j] && cub->map[i][j + 1])
 			j++;
 		if (cub->map[i][j] != '1')
 			return (printf("\033[1;31mError\n\033[1;35m{%c} in \033[1;34m<y>: \

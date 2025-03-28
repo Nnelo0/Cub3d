@@ -6,7 +6,7 @@
 /*   By: nnelo <nnelo@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/05 15:46:02 by ebroudic          #+#    #+#             */
-/*   Updated: 2025/03/27 19:58:57 by nnelo            ###   ########.fr       */
+/*   Updated: 2025/03/28 23:06:00 by nnelo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,11 +99,15 @@ void	read_map(t_cub *cub, int *k, int j, int i)
 
 	if (!j && ft_strchr(cub->split_file[0], '1'))
 	{
-		cub->map[(*k)] = ft_strdup(cub->file[i]);
-		tmp = cub->map[(*k)];
-		cub->map[(*k)] = ft_strtrim(cub->map[(*k)], "\n");
-		free(tmp);
-		(*k)++;
+		while (cub->file[i])
+		{
+			cub->map[(*k)] = ft_strdup(cub->file[i]);
+			tmp = cub->map[(*k)];
+			cub->map[(*k)] = ft_strtrim(cub->map[(*k)], "\n");
+			free(tmp);
+			(*k)++;
+			i++;
+		}
 	}
 }
 
@@ -124,6 +128,8 @@ int	read_textures_colors(t_cub *cub, int i, int k, int j)
 		read_map(cub, &k, j, i);
 		if (cub->split_file && cub->split_file[0])
 			free_array(cub->split_file);
+		if (k > 0)
+			break ;
 		i++;
 	}
 	return (cub->map[k] = NULL, 0);

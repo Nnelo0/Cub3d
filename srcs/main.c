@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ebroudic <ebroudic@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nnelo <nnelo@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/13 09:01:29 by lelanglo          #+#    #+#             */
-/*   Updated: 2025/03/28 10:48:29 by ebroudic         ###   ########.fr       */
+/*   Updated: 2025/03/28 23:08:10 by nnelo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -122,7 +122,7 @@ int	main(int argc, char **argv)
 		return (printf(RED "Error\nfilename must be finish with %s.cub\n"RESET
 				, GREEN), mlx_destroy_display(data.mlx), free(data.mlx), 2);
 	if (read_file(argv[1], &cub) == -1)
-		return (mlx_destroy_display(data.mlx), free(data.mlx), 2);
+		return (mlx_destroy_display(data.mlx), free(data.mlx), 2);;
 	if (init_cub(&cub, argv) == -1)
 		return (mlx_destroy_display(data.mlx), free(data.mlx),
 			free_array(cub.file), 2);
