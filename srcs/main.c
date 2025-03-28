@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nnelo <nnelo@student.42.fr>                +#+  +:+       +#+        */
+/*   By: ebroudic <ebroudic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/13 09:01:29 by lelanglo          #+#    #+#             */
-/*   Updated: 2025/03/27 20:03:13 by nnelo            ###   ########.fr       */
+/*   Updated: 2025/03/28 10:48:29 by ebroudic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,8 @@ static void	init_destroy(t_data *data, t_cub *cub)
 	if (cub->img_ea)
 		mlx_destroy_image(data->mlx, cub->img_ea);
 	free_array(cub->file);
+	free(cub->colors_celling);
+	free(cub->colors_floor);
 	data->map = NULL;
 	data->map = cub->map;
 	data->c = cub->colors_c;
@@ -70,13 +72,18 @@ static void	orientation_player(t_cub *cub, t_data *data)
 
 static void	init_tex(t_data *data, t_cub *cub)
 {
+	free(cub->player);
 	data->textures[0] = load_texture(data->mlx, cub->face_no);
 	data->textures[1] = load_texture(data->mlx, cub->face_so);
 	data->textures[2] = load_texture(data->mlx, cub->face_ea);
 	data->textures[3] = load_texture(data->mlx, cub->face_we);
+	free(cub->face_no);
+	free(cub->face_so);
+	free(cub->face_ea);
+	free(cub->face_we);
 }
 
-void	free_textures(t_cub *cub)
+void	free_textures(t_cub *cub, t_data *data)
 {
 	if (cub->face_ea)
 		free(cub->face_ea);
@@ -90,6 +97,14 @@ void	free_textures(t_cub *cub)
 		free(cub->colors_celling);
 	if (cub->colors_floor)
 		free(cub->colors_floor);
+	if (cub->img_no)
+		mlx_destroy_image(data->mlx, cub->img_no);
+	if (cub->img_so)
+		mlx_destroy_image(data->mlx, cub->img_so);
+	if (cub->img_we)
+		mlx_destroy_image(data->mlx, cub->img_we);
+	if (cub->img_ea)
+		mlx_destroy_image(data->mlx, cub->img_ea);
 }
 
 int	main(int argc, char **argv)
@@ -112,10 +127,10 @@ int	main(int argc, char **argv)
 		return (mlx_destroy_display(data.mlx), free(data.mlx),
 			free_array(cub.file), 2);
 	if (read_textures_colors(&cub, 0, 0, 0) == -1)
-		return (mlx_destroy_display(data.mlx), free(data.mlx),
-		free_array(cub.file), free(cub.map), free_textures(&cub), 2);
+		return (free_textures(&cub, &data), mlx_destroy_display(data.mlx), free(data.mlx),
+		free_array(cub.file), free(cub.map), 2);
 	if (verif(&cub, &data) == -1)
-		return (free_all(&cub), 2);
+		return (free_textures(&cub, &data), mlx_destroy_display(data.mlx), free(data.mlx), free_array(cub.file), 2);
 	init_destroy(&data, &cub);
 	(orientation_player(&cub, &data), init_tex(&data, &cub), init_keys(&data));
 	mlx_hook(data.win, 2, 1L << 0, key_press, &data);

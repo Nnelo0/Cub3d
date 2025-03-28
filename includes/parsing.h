@@ -6,7 +6,7 @@
 /*   By: ebroudic <ebroudic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/13 09:12:28 by ebroudic          #+#    #+#             */
-/*   Updated: 2025/03/27 13:05:42 by ebroudic         ###   ########.fr       */
+/*   Updated: 2025/03/28 10:54:17 by ebroudic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,7 +85,7 @@ int		verif_map(t_cub *cub, t_data *data);
 
 int		verif_caracter(t_cub *cub, int i, int j);
 int		verif_wall(t_cub *cub, int i, int j);
-int		verif_one_player(t_cub *cub, int i, int j, int player, t_data *data);
+int		verif_one_player(t_cub *cub, int i, int j, t_data *data);
 int		valid_positions(t_cub *cub, int y, int x);
 int		verif_is_playable(t_cub *cub);
 

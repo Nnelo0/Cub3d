@@ -6,7 +6,7 @@
 /*   By: ebroudic <ebroudic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/19 14:40:32 by ebroudic          #+#    #+#             */
-/*   Updated: 2025/03/27 13:00:59 by ebroudic         ###   ########.fr       */
+/*   Updated: 2025/03/28 09:09:35 by ebroudic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,9 @@ _texture", "");
 			&width, &height);
 	if (!cub->img_no)
 	{
-		print_error(CYAN, cub->face_no, " not found for ", "<NO>");
+		print_error(CYAN, cub->face_no, " PATH not found for ", "<NO>");
+		free(cub->face_no);
+		cub->face_no = NULL;
 		type = -1;
 	}
 	return (type);
@@ -54,7 +56,9 @@ _texture", "");
 			&width, &height);
 	if (!cub->img_so)
 	{
-		print_error(CYAN, cub->face_so, " not found for ", "<SO>");
+		print_error(CYAN, cub->face_so, " PATH not found for ", "<SO>");
+		free(cub->face_so);
+		cub->face_so = NULL;
 		type = -1;
 	}
 	return (type);
@@ -78,7 +82,9 @@ _texture", "");
 			&width, &height);
 	if (!cub->img_we)
 	{
-		print_error(CYAN, cub->face_we, " not found for ", "<WE>");
+		print_error(CYAN, cub->face_we, " PATH not found for ", "<WE>");
+		free(cub->face_we);
+		cub->face_we = NULL;
 		type = -1;
 	}
 	return (type);
@@ -102,7 +108,9 @@ _texture", "");
 			&width, &height);
 	if (!cub->img_ea)
 	{
-		print_error(CYAN, cub->face_ea, " not found for ", "<EA>");
+		print_error(CYAN, cub->face_ea, " PATH not found for ", "<EA>");
+		free(cub->face_ea);
+		cub->face_ea = NULL;
 		type = -1;
 	}
 	return (type);
