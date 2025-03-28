@@ -6,7 +6,7 @@
 /*   By: nnelo <nnelo@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/13 09:01:29 by lelanglo          #+#    #+#             */
-/*   Updated: 2025/03/28 23:08:10 by nnelo            ###   ########.fr       */
+/*   Updated: 2025/03/28 23:16:51 by nnelo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,30 +83,6 @@ static void	init_tex(t_data *data, t_cub *cub)
 	free(cub->face_we);
 }
 
-void	free_textures(t_cub *cub, t_data *data)
-{
-	if (cub->face_ea)
-		free(cub->face_ea);
-	if (cub->face_no)
-		free(cub->face_no);
-	if (cub->face_we)
-		free(cub->face_we);
-	if (cub->face_so)
-		free(cub->face_so);
-	if (cub->colors_celling)
-		free(cub->colors_celling);
-	if (cub->colors_floor)
-		free(cub->colors_floor);
-	if (cub->img_no)
-		mlx_destroy_image(data->mlx, cub->img_no);
-	if (cub->img_so)
-		mlx_destroy_image(data->mlx, cub->img_so);
-	if (cub->img_we)
-		mlx_destroy_image(data->mlx, cub->img_we);
-	if (cub->img_ea)
-		mlx_destroy_image(data->mlx, cub->img_ea);
-}
-
 int	main(int argc, char **argv)
 {
 	t_data	data;
@@ -118,19 +94,8 @@ int	main(int argc, char **argv)
 	data.mlx = mlx_init();
 	if (!data.mlx)
 		return (printf(RED "Error\n%smlx_init failed\n"RESET, GREEN), 2);
-	if (verif_cub(argv))
-		return (printf(RED "Error\nfilename must be finish with %s.cub\n"RESET
-				, GREEN), mlx_destroy_display(data.mlx), free(data.mlx), 2);
-	if (read_file(argv[1], &cub) == -1)
-		return (mlx_destroy_display(data.mlx), free(data.mlx), 2);;
-	if (init_cub(&cub, argv) == -1)
-		return (mlx_destroy_display(data.mlx), free(data.mlx),
-			free_array(cub.file), 2);
-	if (read_textures_colors(&cub, 0, 0, 0) == -1)
-		return (free_textures(&cub, &data), mlx_destroy_display(data.mlx), free(data.mlx),
-		free_array(cub.file), free(cub.map), 2);
-	if (verif(&cub, &data) == -1)
-		return (free_textures(&cub, &data), mlx_destroy_display(data.mlx), free(data.mlx), free_array(cub.file), 2);
+	if (parsing(&cub, &data, argv) == -1)
+		return (2);
 	init_destroy(&data, &cub);
 	(orientation_player(&cub, &data), init_tex(&data, &cub), init_keys(&data));
 	mlx_hook(data.win, 2, 1L << 0, key_press, &data);

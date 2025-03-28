@@ -6,7 +6,7 @@
 /*   By: nnelo <nnelo@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/05 15:46:02 by ebroudic          #+#    #+#             */
-/*   Updated: 2025/03/28 23:06:00 by nnelo            ###   ########.fr       */
+/*   Updated: 2025/03/28 23:12:19 by nnelo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,29 +38,32 @@ int	read_file(char *filename, t_cub *cub)
 		free(line);
 		i++;
 	}
-	cub->file[i] = NULL;
-	close (fd);
-	return (0);
+	return (cub->file[i] = NULL, close (fd), 0);
 }
 
 int	has_textures_utils(t_cub *cub, int *j)
 {
+	if ((*j))
+		return (0);
 	if (ft_strcmp(cub->split_file[0], "WE") == 0)
 	{
 		if (cub->face_we)
-			return (print_duplicate("WE"), free(cub->face_we), cub->face_we = NULL, -1);
+			return (print_duplicate("WE"), free(cub->face_we),
+				cub->face_we = NULL, -1);
 		cub->face_we = read_path(cub->face_we, cub, j);
 	}
 	else if (ft_strcmp(cub->split_file[0], "C") == 0)
 	{
 		if (cub->colors_celling)
-			return (print_duplicate("C"), free(cub->colors_celling), cub->colors_celling = NULL, -1);
+			return (print_duplicate("C"), free(cub->colors_celling),
+				cub->colors_celling = NULL, -1);
 		cub->colors_celling = read_path(cub->colors_celling, cub, j);
 	}
 	else if (ft_strcmp(cub->split_file[0], "F") == 0)
 	{
 		if (cub->colors_floor)
-			return (print_duplicate("F"), free(cub->colors_floor), cub->colors_floor = NULL, -1);
+			return (print_duplicate("F"), free(cub->colors_floor),
+				cub->colors_floor = NULL, -1);
 		cub->colors_floor = read_path(cub->colors_floor, cub, j);
 	}
 	return (0);
@@ -71,23 +74,24 @@ int	has_textures(t_cub *cub, int *j)
 	if (ft_strcmp(cub->split_file[0], "NO") == 0)
 	{
 		if (cub->face_no)
-			return (print_duplicate("NO"), free(cub->face_no), cub->face_no = NULL, -1);
+			return (print_duplicate("NO"), free(cub->face_no),
+				cub->face_no = NULL, -1);
 		cub->face_no = read_path(cub->face_no, cub, j);
 	}
 	else if (ft_strcmp(cub->split_file[0], "SO") == 0)
 	{
 		if (cub->face_so)
-			return (print_duplicate("SO"), free(cub->face_so), cub->face_so = NULL, -1);
+			return (print_duplicate("SO"), free(cub->face_so),
+				cub->face_so = NULL, -1);
 		cub->face_so = read_path(cub->face_so, cub, j);
 	}
 	else if (ft_strcmp(cub->split_file[0], "EA") == 0)
 	{
 		if (cub->face_ea)
-			return (print_duplicate("EA"), free(cub->face_ea), cub->face_ea = NULL, -1);
+			return (print_duplicate("EA"), free(cub->face_ea),
+				cub->face_ea = NULL, -1);
 		cub->face_ea = read_path(cub->face_ea, cub, j);
 	}
-	if ((*j))
-		return (0);
 	if (has_textures_utils(cub, j) == -1)
 		return (-1);
 	return (0);

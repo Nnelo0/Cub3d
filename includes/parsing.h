@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ebroudic <ebroudic@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nnelo <nnelo@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/13 09:12:28 by ebroudic          #+#    #+#             */
-/*   Updated: 2025/03/28 10:54:17 by ebroudic         ###   ########.fr       */
+/*   Updated: 2025/03/28 23:17:01 by nnelo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,8 @@ typedef struct s_cub
 int		verif_cub(char **argv);
 int		init_cub(t_cub *cub, char **argv);
 void	free_all(t_cub *cub);
-
+void	free_textures(t_cub *cub, t_data *data);
+int		parsing(t_cub *cub, t_data *data, char **argv);
 /*-------------read-file---------------*/
 
 int		read_file(char *filename, t_cub *cub);
