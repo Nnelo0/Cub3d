@@ -6,7 +6,7 @@
 /*   By: nnelo <nnelo@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/19 14:36:58 by ebroudic          #+#    #+#             */
-/*   Updated: 2025/03/28 23:07:34 by nnelo            ###   ########.fr       */
+/*   Updated: 2025/03/29 16:30:06 by nnelo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ int	first_line(t_cub *cub, int i, int j)
 	{
 		while (cub->map[0][j] == ' ')
 			j++;
-		if (cub->map[0][j] != '1')
+		if (cub->map[0][j] != '1' && cub->map[i][j] != ' ')
 		{
 			printf("\033[1;31mError\n\033[1;35m{%c} in \033[1;34m<y>: \
 %d \033[1;35mand \033[1;34m<x>: %d \033[1;35mmust be a [1] \033[1;33m\
@@ -66,7 +66,7 @@ int	last_line(t_cub *cub, int i, int j)
 		j++;
 	while (cub->map[i][j])
 	{
-		if (cub->map[i][j] != '1')
+		if (cub->map[i][j] != '1' && cub->map[i][j] != ' ')
 		{
 			printf("\033[1;31mError\n\033[1;35m{%c} in \033[1;34m<y>: \
 %d \033[1;35mand \033[1;34m<x>: %d \033[1;35mmust be a [1] \033[1;33m\

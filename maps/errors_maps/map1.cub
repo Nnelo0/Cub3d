@@ -1,0 +1,14 @@
+NO ./textures/flash.xpm
+SO ./textures/sally.xpm
+WE ./textures/martin.xpm
+EA ./textures/fan.xpm
+
+F 243,100,100
+C 243,100,100
+
+1111111111
+1000110111
+1100100111
+1100000001
+1001000111
+1111111111
