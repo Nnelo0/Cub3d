@@ -31,7 +31,7 @@ $(NAME): $(OBJS) $(LIBFT) $(MINILIBX)
 	@echo "\033[32m✔ Compilation completed\033[0m"
 
 $(OBJDIR)/%.o: %.c | $(OBJDIR)
-	mkdir -p $(dir $@)  # Crée les sous-dossiers si nécessaire
+	mkdir -p $(dir $@)
 	$(CC) $(CFLAGS) -c $< -o $@
 
 $(OBJDIR):
