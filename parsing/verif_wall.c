@@ -6,7 +6,7 @@
 /*   By: ebroudic <ebroudic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/19 14:36:58 by ebroudic          #+#    #+#             */
-/*   Updated: 2025/03/31 08:50:34 by ebroudic         ###   ########.fr       */
+/*   Updated: 2025/03/31 09:09:51 by ebroudic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,7 +92,8 @@ int	verif_wall(t_cub *cub, int i, int j)
 		if (cub->map[i][j] != '1')
 			return (printf("\033[1;31mError\n\033[1;35m{%c} in \033[1;34m<y>: \
 %d \033[1;35mand \033[1;34m<x>: %d \033[1;35mmust be a [1] \033[1;33m\
-<usage>: map must be surround by wall\n"RESET, cub->map[i][j], i + 1, j + 1), -1);
+<usage>: map must be surround by wall\n"RESET, cub->map[i][j], i + 1, j + 1)
+			, -1);
 		j = 0;
 		while (cub->map[i][j] == ' ')
 			j++;
