@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nnelo <nnelo@student.42.fr>                +#+  +:+       +#+        */
+/*   By: ebroudic <ebroudic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/13 09:12:28 by ebroudic          #+#    #+#             */
-/*   Updated: 2025/03/28 23:17:01 by nnelo            ###   ########.fr       */
+/*   Updated: 2025/03/31 08:39:58 by ebroudic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@
 # define MAGENTA "\033[1;35m"
 # define CYAN    "\033[1;36m"
 
-typedef struct s_data t_data;
+typedef struct s_data	t_data;
 
 typedef struct s_cub
 {
