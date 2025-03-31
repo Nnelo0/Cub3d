@@ -6,7 +6,7 @@
 /*   By: ebroudic <ebroudic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/17 13:17:09 by ebroudic          #+#    #+#             */
-/*   Updated: 2025/03/28 10:54:09 by ebroudic         ###   ########.fr       */
+/*   Updated: 2025/03/31 08:50:39 by ebroudic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ int	verif_map(t_cub *cub, t_data *data)
 	if (!cub->map || !cub->map[0])
 	{
 		print_error(GREEN, "", "Missing <MAP> \033[1;33m<usage>: 1 for wall, \
-0 for empty spaces, [N][S][E][W] for player", "");
+0 for empty spaces, [N][S][E][W] for player"RESET, "");
 		return (type = -1);
 	}
 	if (verif_caracter(cub, 0, 0) == -1)

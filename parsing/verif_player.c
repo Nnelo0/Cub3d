@@ -6,7 +6,7 @@
 /*   By: ebroudic <ebroudic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/21 18:19:41 by nnelo             #+#    #+#             */
-/*   Updated: 2025/03/28 10:53:52 by ebroudic         ###   ########.fr       */
+/*   Updated: 2025/03/31 08:51:05 by ebroudic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int	verif_player(t_cub *cub, int i, int j, t_data *data)
 		printf("\033[1;31mError\n\033[1;35m{%c} in \033[1;34m<y>: \
 %d \033[1;35mand \033[1;34m<x>: %d \033[1;35mone player is allowed in map file \
 \033[1;33m<usage>: [N] or [S] or [W] or [E] for according the player to the \
-orientation\n", cub->map[i][j], i + 1, j + 1);
+orientation\n"RESET, cub->map[i][j], i + 1, j + 1);
 		free(cub->player);
 		return (-1);
 	}
@@ -58,7 +58,7 @@ int	verif_one_player(t_cub *cub, int i, int j, t_data *data)
 	{
 		printf("\033[1;31mError\n\033[1;35mWe need a player in map file \
 \033[1;33m<usage>: [N] or [S] or [W] or [E] for according the player \
-to the orientation\n");
+to the orientation\n"RESET);
 		return (-1);
 	}
 	return (0);

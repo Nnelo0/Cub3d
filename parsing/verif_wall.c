@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   verif_wall.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nnelo <nnelo@student.42.fr>                +#+  +:+       +#+        */
+/*   By: ebroudic <ebroudic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/19 14:36:58 by ebroudic          #+#    #+#             */
-/*   Updated: 2025/03/29 16:30:06 by nnelo            ###   ########.fr       */
+/*   Updated: 2025/03/31 08:50:34 by ebroudic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ int	verif_caracter(t_cub *cub, int i, int j)
 			{
 				printf("\033[1;31mError\n\033[1;35m{%c} in \033[1;34m<y>: \
 %d \033[1;35mand \033[1;34m<x>: %d \033[1;35mnot allowed in map file \
-\033[1;33monly [1] [0] [ ] [N] [S] [E] [W] is allowed\n",
+\033[1;33monly [1] [0] [ ] [N] [S] [E] [W] is allowed\n"RESET,
 					cub->map[i][j], i + 1, j + 1);
 				return (type = -1);
 			}
@@ -50,7 +50,7 @@ int	first_line(t_cub *cub, int i, int j)
 		{
 			printf("\033[1;31mError\n\033[1;35m{%c} in \033[1;34m<y>: \
 %d \033[1;35mand \033[1;34m<x>: %d \033[1;35mmust be a [1] \033[1;33m\
-<usage>: map must be surround by wall\n", cub->map[i][j], i + 1, j + 1);
+<usage>: map must be surround by wall\n"RESET, cub->map[i][j], i + 1, j + 1);
 			return (-1);
 		}
 		j++;
@@ -70,7 +70,7 @@ int	last_line(t_cub *cub, int i, int j)
 		{
 			printf("\033[1;31mError\n\033[1;35m{%c} in \033[1;34m<y>: \
 %d \033[1;35mand \033[1;34m<x>: %d \033[1;35mmust be a [1] \033[1;33m\
-<usage>: map must be surround by wall\n", cub->map[i][j], i + 1, j + 1);
+<usage>: map must be surround by wall\n"RESET, cub->map[i][j], i + 1, j + 1);
 			return (-1);
 		}
 		j++;
@@ -92,14 +92,14 @@ int	verif_wall(t_cub *cub, int i, int j)
 		if (cub->map[i][j] != '1')
 			return (printf("\033[1;31mError\n\033[1;35m{%c} in \033[1;34m<y>: \
 %d \033[1;35mand \033[1;34m<x>: %d \033[1;35mmust be a [1] \033[1;33m\
-<usage>: map must be surround by wall\n", cub->map[i][j], i + 1, j + 1), -1);
+<usage>: map must be surround by wall\n"RESET, cub->map[i][j], i + 1, j + 1), -1);
 		j = 0;
 		while (cub->map[i][j] == ' ')
 			j++;
 		if (cub->map[i][j] != '1')
 			return (printf("\033[1;31mError\n\033[1;35m{%c} in \033[1;34m<y>: \
 %d \033[1;35mand \033[1;34m<x>: %d \033[1;35mmust be a [1] \033[1;33m\
-map must be surround by wall\n", cub->map[i][j], i + 1, j + 1), -1);
+map must be surround by wall\n"RESET, cub->map[i][j], i + 1, j + 1), -1);
 		i++;
 	}
 	return (0);

@@ -6,7 +6,7 @@
 /*   By: ebroudic <ebroudic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/19 14:49:07 by ebroudic          #+#    #+#             */
-/*   Updated: 2025/03/19 15:21:19 by ebroudic         ###   ########.fr       */
+/*   Updated: 2025/03/31 08:47:27 by ebroudic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ int	ft_isdigit_s(char *s, char *extra, char *index)
 		if (!('0' <= s[i] && '9' >= s[i]))
 		{
 			printf(RED "ERROR\n\033[1;32m[%c] \033[1;34min \033[1;32m%s \
-\033[1;34mof \033[1;32m%s \033[1;33mmust be a digit in 0 and 255\n",
+\033[1;34mof \033[1;32m%s \033[1;33mmust be a digit in 0 and 255\n"RESET,
 				s[i], extra, index);
 			type = -1;
 		}
@@ -41,7 +41,7 @@ int	verif_result(int i, char *extra, char *index)
 	if (i > 255 || i < 0)
 	{
 		printf(RED "ERROR\n\033[1;32m[%d] \033[1;34mof \033[1;32m%s \
-\033[1;34min \033[1;32m%s \033[1;33mmust be in 0 and 255\n",
+\033[1;34min \033[1;32m%s \033[1;33mmust be in 0 and 255\n"RESET,
 			i, extra, index);
 		type = -1;
 	}
