@@ -6,7 +6,7 @@
 /*   By: lelanglo <lelanglo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/18 10:40:03 by lelanglo          #+#    #+#             */
-/*   Updated: 2025/03/27 14:10:26 by lelanglo         ###   ########.fr       */
+/*   Updated: 2025/03/31 09:04:09 by lelanglo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,7 @@ static void	draw_column(t_data *data, int x, t_ray *ray)
 			* data->textures[what_texture(ray)].width + ray->tex_x];
 		put_pixel(data, x, y++, ray->color);
 	}
-	y = ray->draw_end;
+	y = ray->draw_end + 1;
 	while (y < HEIGHT)
 		put_pixel(data, x, y++, data->f);
 }

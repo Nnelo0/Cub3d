@@ -2,7 +2,7 @@ NO ./textures/flash.xpm
 SO ./textures/sally.xpm
 WE ./textures/martin.xpm
 EA ./textures/fan.xpm
-F 120,120,250
+F 120,170,250
 C 120,120,250
         1111111111111111111111111
         1000000000110000000000001
