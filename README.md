@@ -30,16 +30,16 @@ C 120,120,250
 11111111 1111111 111111111111
 ```
 
-NO : Texture for Nord face bloc
-SO : Texture for South face bloc
-WE : Texture for West face bloc
-EA : Texture for East face bloc
-F  : Colors for floor
-C  : Colors for celling
+``NO : Texture for Nord face bloc``
+``SO : Texture for South face bloc``
+``WE : Texture for West face bloc``
+``EA : Texture for East face bloc``
+``F  : Colors for floor``
+``C  : Colors for celling``
 and the map :
-1 : for wall
-0 : for nothing (path for player)
-N | E | S | W : for player (the letters means the direction of the player at spawn)  
+``1 : for wall``
+``0 : for nothing (path for player)``
+`` N | E | S | W : for player (the letters means the direction of the player at spawn)``
 
 ## Setup Instructions
 ### 1. Launch the project
